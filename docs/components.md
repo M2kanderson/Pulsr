@@ -3,7 +3,7 @@
 **Bolded** components are associated with routes.
 
 * **App**
-  * **UserPhotosIndex
+  * **UserPhotosIndex**
     * **CamerarollIndex**
       * PhotoEditForm
     * **AlbumsIndex**
