@@ -3,7 +3,7 @@ Pulsr web application demo project
 
 ## Minimum Viable Product
 
-Pulsr is a web application inspired by Flickr that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+Pulsr is a web application inspired by Flickr that will be built using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
 - [ ] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login
