@@ -12,7 +12,7 @@ Pulsr is a web application inspired by Flickr that will be built using Ruby on R
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
-- [ ] Albums for organizing phots
+- [ ] Albums for organizing photos
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
