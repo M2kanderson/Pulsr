@@ -111,7 +111,7 @@ which has its own `Index` view.
   - [ ] removing comments
 - [ ] Style new elements
 
-### Phase 7: Tags (1 days, W2 Fr 12pm)
+### Phase 7: Tags and Search (2 days, W2 Fr 12pm)
 
 **Objective:** Photos can be tagged with multiple tags, and tags are searchable.
 
@@ -123,7 +123,7 @@ which has its own `Index` view.
 - [ ] Style new elements
 
 
-### Phase 8: Styling Cleanup and Final Seeding (1 day, W2 F 6pm)
+### Phase 8: Styling Cleanup and Final Seeding (1 day, W2 S 12pm)
 
 **objective:** Make the site feel more cohesive and awesome.
 
