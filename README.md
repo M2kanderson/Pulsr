@@ -50,13 +50,13 @@ Pulsr is a web application inspired by Flickr that will be built using Ruby on R
 - [ ] user signup/signin pages
 - [ ] blank landing page after signin
 
-### Phase 2: Photos Model, API, and basic APIUtil (1.5 days, W1 Th 12pm)
+### Phase 2: Initial Seeding, Photos Model, API, and basic APIUtil (1.5 days, W1 Th 12pm)
 
 **Objective:** Photos can be created, viewed, edited and destroyed through
 the API.
 
 - [ ] create `Photo` model
-- [ ] seed the database with a small amount of test data
+- [ ] seed the database with a small amount of users and photos for testing. Seeding to continue throughout project 
 - [ ] CRUD API for photos (`PhotosController`)
 - [ ] jBuilder views for photos
 - [ ] setup Webpack & Flux scaffold
@@ -123,7 +123,7 @@ which has its own `Index` view.
 - [ ] Style new elements
 
 
-### Phase 8: Styling Cleanup and Seeding (1 day, W2 F 6pm)
+### Phase 8: Styling Cleanup and Final Seeding (1 day, W2 F 6pm)
 
 **objective:** Make the site feel more cohesive and awesome.
 
