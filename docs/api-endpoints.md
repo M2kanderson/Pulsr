@@ -20,7 +20,7 @@
 
 ## JSON API
 
-### Notes
+### Photos
 
 - `GET /api/photos`
   - Photos index/search
@@ -30,7 +30,7 @@
 - `PATCH /api/photos/:id`
 - `DELETE /api/photos/:id`
 
-### Notebooks
+### Albums
 
 - `GET /api/albums`
 - `POST /api/albums`
