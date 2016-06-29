@@ -18,7 +18,7 @@ window.SessionStore = require("./stores/session_store");
 const appRouter = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App }>
-      <IndexRoute path="index" component={Index}></IndexRoute>
+      <IndexRoute component={Index}></IndexRoute>
       <Route path="index" component={Index}></Route>
       <Route path="/users/new" component={signupForm}></Route>
       <Route path="/session/new" component={loginForm}></Route>
