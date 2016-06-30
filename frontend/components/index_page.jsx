@@ -1,15 +1,34 @@
 const React = require('react');
+const IndexSplashPage = require('./index_splash_page');
+const SessionStore = require('../stores/session_store');
+const IndexPhotos = require('./index_photos');
 
 const IndexPage = React.createClass({
-
+  getInitialState: function() {
+    return {
+      currentUser: SessionStore.current_user()
+    };
+  },
+  componentWillMount(){
+    this.sessionListener = SessionStore.addListener(this._onChange);
+  },
+  componentWillUnmount(){
+    this.sessionListener.remove();
+  },
+  _onChange(){
+    this.setState({currentUser: SessionStore.current_user()});
+  },
   render: function() {
+    let Page;
+    if(!SessionStore.isUserLoggedIn())
+    {
+      Page = <IndexSplashPage />;
+    }else {
+      Page = <IndexPhotos />;
+    }
     return (
       <div >
-        <img className="index_image" src="http://res.cloudinary.com/pulsr/image/upload/c_crop,h_381,w_1024/v1467156976/Space-Galaxy-Stars-Wallpaper-High-Resolution-1024x576_ot028u.jpg"></img>
-        <h1 className="index_header">The final fronteir for all your photos
-          <p className="index_subheader">Upload, Access, Organize, and Share all your otherworldly photos from anywhere in the universe.</p>
-        </h1>
-
+        {Page}
       </div>
     );
   }

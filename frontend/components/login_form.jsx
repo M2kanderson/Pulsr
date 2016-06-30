@@ -11,7 +11,8 @@ const LoginForm = React.createClass({
     return {
       username: "",
       password: "",
-      errors: {}
+      errors: {},
+      guest: this.props.guest
     };
   },
   componentDidMount(){
@@ -29,7 +30,8 @@ const LoginForm = React.createClass({
   },
   _onSubmit(e){
     e.preventDefault();
-    SessionActions.login({username: this.state.username, password: this.state.password});
+    SessionActions.login({username: this.state.username,
+                          password: this.state.password});
   },
   _updateUsername(e){
     this.setState({username: e.target.value.toLowerCase()});
@@ -37,7 +39,44 @@ const LoginForm = React.createClass({
   _updatePassword(e){
     this.setState({password: e.target.value});
   },
+  _addUsername(){
+    let username = "guest";
+    let password = "guestlogin";
+    let index = 1;
+    let usernameInterval = setInterval(()=>{
+      if(index <= username.length)
+      {
+        this.setState({username: username.slice(0,index)});
+        index += 1;
+      }
+      else{
+        clearInterval(usernameInterval);
+        index = 1;
+        let passwordInterval = setInterval(()=>{
+          if(index <= password.length){
+            this.setState({password: password.slice(0,index)});
+            index += 1;
+          }
+          else{
+            clearInterval(passwordInterval);
+            SessionActions.login({username: this.state.username,
+                                  password: this.state.password});
+          }
+        }, 250);
+      }
+
+    }, 250);
+
+  },
   render: function() {
+    if(this.state.guest === "true")
+    {
+      this._addUsername();
+      this.setState({guest: false});
+      //
+      // SessionActions.login({username: "guest",
+      //                       password: "guestlogin"});
+    }
     let errors;
     if(this.state.errors.base)
     {
@@ -55,9 +94,13 @@ const LoginForm = React.createClass({
         {errors}
 
           <label for="username">Username: </label>
-          <input type="text" id="description" onChange={this._updateUsername}></input>
+          <input type="text" id="description"
+                  onChange={this._updateUsername}
+                  value={this.state.username}></input>
           <label for="password">Password: </label>
-          <input type="password" id="password" onChange={this._updatePassword}></input>
+          <input type="password" id="password"
+                 onChange={this._updatePassword}
+                 value={this.state.password}></input>
           <br></br>
           <br></br>
 

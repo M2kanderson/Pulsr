@@ -14,9 +14,27 @@
  *= require_self
  */
 
- ul{
-   padding: 0px;
-   margin: 0px;
+/*reset*/
+
+ html, body, div, span, applet, object, iframe,
+ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+ a, abbr, acronym, address, big, cite, code,
+ del, dfn, em, img, ins, kbd, q, s, samp,
+ small, strike, strong, sub, sup, tt, var,
+ b, u, i, center,
+ dl, dt, dd, ol, ul, li,
+ fieldset, form, label, legend,
+ table, caption, tbody, tfoot, thead, tr, th, td,
+ article, aside, canvas, details, embed,
+ figure, figcaption, footer, header, hgroup,
+ menu, nav, output, ruby, section, summary,
+ time, mark, audio, video {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;
  }
 
  a{
@@ -26,18 +44,11 @@
 
  li{
    list-style-type: none;
-   border-top: 1px solid black;
    padding: 0px;
    margin: 0px;
  }
 
- header{
-   align-items: center;
-   background-color: black;
-   display: flex;
-   justify-content: space-between;
- }
-
+/*signup signin forms*/
  .user-form-header{
    font-family: 'Lato', sans-serif;
    font-size: 24px;
@@ -59,8 +70,13 @@
    height: 20px;
  }
 
-
-
+/*header*/
+header{
+  align-items: center;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+}
  .logo{
    margin: 10px 10px 10px 100px;
    color:white;
@@ -83,6 +99,7 @@
  }
 
  .dropdown-content {
+   border: 1px solid black;
    display: none;
    position: absolute;
    background-color: white;
@@ -90,19 +107,63 @@
    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
    z-index: 1;
    color: black;
+   padding: 5px;
 }
 .dropdown-content li:hover{
   background-color: #d1d1e0;
 }
 
+.explore-dropdown:hover .dropdown-content {
+   display: block;
+ }
+
+.signup_button, .signin_button, .guest_button, .signout_button {
+  color: white;
+  background-color: #128fdc;
+  border-radius: 3px;
+  border: 0px;
+  padding: 0px 20px;
+  margin: 10px 100px 10px 10px;
+  line-height: 32px;
+  height: 32px;
+  min-width: 100px;
+  display: block;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 450;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: top;
+  box-sizing: border-box;
+  float: right;
+}
+
+.signin_button{
+
+  background-color: black;
+  padding: 0px 20px;
+  margin: 10px;
+
+}
+
+.guest_button{
+  background-color: green;
+  padding: 0px 20px;
+  margin: 10px;
+}
 
 
+
+/*index spash area (not logged in)*/
 .index_image{
   display: block;
-  width:1265px;
+  min-width:1375px;
 }
 
 .index_header{
+  font-family: 'Lato', sans-serif;
+  font-size: 36px;
   display: block;
   position: relative;
   text-align: center;
@@ -117,77 +178,36 @@
   background:rgba(0,0,0,0.4);
 }
 
+/*photos index*/
 
-
-Link{
-  color: inherit;
+.photos-images, .photo-detail{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
- .explore-dropdown:hover .dropdown-content {
-    display: block;
-  }
+.photos_image{
 
- .signup_button{
-   color: white;
-   background-color: #128fdc;
-   border-radius: 3px;
-   border: 0px;
-   padding: 0px 20px;
-   margin: 10px 100px 10px 10px;
-   line-height: 32px;
-   height: 32px;
-   min-width: 100px;
-   display: block;
-   text-decoration: none;
-   font-size: 16px;
-   font-family: 'Lato', sans-serif;
-   font-weight: 450;
-   text-align: center;
-   cursor: pointer;
-   vertical-align: top;
-   box-sizing: border-box;
-   float: right;
- }
+  max-width: 800px;
+}
 
- .signin_button{
-   color: white;
-   background-color: black;
-   border-radius: 3px;
-   border: 0px;
-   padding: 0px 20px;
-   margin: 10px;
-   line-height: 32px;
-   height: 32px;
-   min-width: 100px;
-   display: block;
-   text-decoration: none;
-   font-size: 16px;
-   font-family: 'Lato', sans-serif;
-   font-weight: 450;
-   text-align: center;
-   cursor: pointer;
-   vertical-align: top;
-   box-sizing: border-box;
-   float: right;
- }
+.photo_image_detail{
+  max-height: 400px;
+}
 
- .signout_button{
-   color: white;
-   background-color: #128fdc;
-   border-radius: 3px;
-   border: 0px;
-   padding: 0px 20px;
-   margin: 10px 100px 10px 10px;
-   line-height: 32px;
-   height: 32px;
-   min-width: 100px;
-   display: block;
-   text-decoration: none;
-   font-size: 16px;
-   font-family: 'Lato', sans-serif;
-   font-weight: 450;
-   text-align: center;
-   cursor: pointer;
-   vertical-align: top;
-   box-sizing: border-box;
-   float: right;
- }
+.photo_image_detail:hover{
+  cursor: zoom-in;
+}
+
+.popout-image {
+  height: 100%
+
+}
+
+
+.popout-image img{
+  max-width:100%;
+  max-height:100%;
+  cursor: zoom-out;
+}

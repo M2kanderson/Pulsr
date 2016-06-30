@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
 
+  has_many :photos
+  has_many :comments
+
   attr_reader :password
   after_initialize :ensure_session_token
 
