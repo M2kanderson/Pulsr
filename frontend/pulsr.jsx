@@ -28,16 +28,16 @@ const SessionActions = require('./actions/session_actions');
 //stores
 const SessionStore = require('./stores/session_store');
 
-window.SessionStore = require("./stores/session_store");
-window.PhotoApiUtil = require("./util/photo_api_util");
-window.PhotoActions = require("./actions/photo_actions");
-window.PhotoStore = require("./stores/photo_store");
-window.AlbumStore = require("./stores/album_store");
-window.AlbumActions = require("./actions/album_actions");
-window.CommentActions = require("./actions/comment_actions");
-window.CommentStore = require("./stores/comment_store");
-window.TagActions = require("./actions/tag_actions");
-window.TagStore = require("./stores/tag_store");
+// window.SessionStore = require("./stores/session_store");
+// window.PhotoApiUtil = require("./util/photo_api_util");
+// window.PhotoActions = require("./actions/photo_actions");
+// window.PhotoStore = require("./stores/photo_store");
+// window.AlbumStore = require("./stores/album_store");
+// window.AlbumActions = require("./actions/album_actions");
+// window.CommentActions = require("./actions/comment_actions");
+// window.CommentStore = require("./stores/comment_store");
+// window.TagActions = require("./actions/tag_actions");
+// window.TagStore = require("./stores/tag_store");
 
 function _ensureLoggedIn(nextState, replace){
   if(!SessionStore.isUserLoggedIn())
