@@ -88,7 +88,8 @@
 }
 
 .tag{
-  display: list-item;
+  display: flex;
+  flex-direction: row;
   text-align: -webkit-match-parent;
   list-style: none;
   color: #212124;

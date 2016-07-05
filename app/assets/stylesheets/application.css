@@ -89,12 +89,47 @@
  }
 
 /*header*/
-header{
-  align-items: center;
-  background-color: black;
-  display: flex;
-  justify-content: space-between;
-}
+  header{
+    align-items: center;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+  }
+  .search-field input{
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    outline: 0;
+    resize: none;
+    border: 0;
+    height: 33px;
+    width: 250px;
+   }
+  .searchbar{
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    padding: 1px;
+  }
+  .search-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    outline: 0;
+    width: 32px;
+    height: 33px;
+    background-color: white;
+  }
+  .search-icon-img{
+    outline: 0;
+    position: inherit;
+    background-image: url(http://res.cloudinary.com/pulsr/image/upload/v1467749571/zoom-or-search-tool_318-34054_sp57he.jpg);
+    background-size: cover;
+    border: 0;
+    width: 18px;
+    height: 18px;
+  }
  .logo{
    margin: 10px 10px 10px 100px;
    color:white;

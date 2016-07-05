@@ -11,6 +11,10 @@ const PhotoActions = {
   fetchUserPhotos(userId){
     PhotoApiUtil.fetchUserPhotos(userId,this.receiveAllPhotos, ErrorActions.setErrors);
   },
+  fetchTagPhotos(tagNames)
+  {
+    PhotoApiUtil.fetchTagPhotos(tagNames,this.receiveAllPhotos, ErrorActions.setErrors);
+  },
   fetchPhoto(id){
     PhotoApiUtil.fetchPhoto(id, this.receivePhoto, ErrorActions.setErrors);
   },

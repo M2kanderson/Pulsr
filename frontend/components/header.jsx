@@ -8,8 +8,10 @@ const ModalStyle = require("../modal_style");
 
 const SessionStore = require("../stores/session_store");
 const SessionActions = require("../actions/session_actions");
+
 const SignupForm = require("./signup_form");
 const LoginForm = require("./login_form");
+const Searchbar = require("./searchbar");
 
 
 const Header = React.createClass({
@@ -62,6 +64,7 @@ const Header = React.createClass({
                   onClick={this._guest}>Guest</button>
           <button className="signin_button"
                   onClick={this._signIn}>Sign In</button>
+          <Searchbar/>
 
         </div>
       );
@@ -71,6 +74,7 @@ const Header = React.createClass({
             <img className="user-icon-header" src={this.state.currentUser.icon}></img>
             <button className="signout_button"
                     onClick={this._logout}>Sign Out</button>
+            <Searchbar/>
           </div>
         );
       }

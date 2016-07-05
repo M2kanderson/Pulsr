@@ -84,3 +84,57 @@
   color: #212124;
   font-size: 100%;
 }
+
+/* ---- grid ---- */
+.photos-grid-container{
+  margin-top: 10px;
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photos-grid {
+  background-color: #f3f5f6;
+  width: 80%;
+}
+
+/* clear fix */
+.photos-grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.photos-grid-sizer,
+.photos-grid-item {
+  cursor: pointer;
+  width: 33.33%;
+}
+
+.photos-grid-item {
+  float: left;
+}
+
+.photos-grid-item img {
+  display: block;
+  max-width: 100%;
+}
+
+.search-container{
+  margin-top: 125px;
+  overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 130px;
+  padding-right: 130px;
+  display: block;
+}
+
+.search-title{
+  margin-left: 80px;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+}

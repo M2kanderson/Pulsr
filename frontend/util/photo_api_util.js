@@ -30,6 +30,24 @@ const PhotoApiUtil = {
       }
     });
   },
+  fetchTagPhotos(tagNames, success, error){
+    if(!tagNames)
+    {
+      tagNames = [];
+    }
+    $.ajax({
+      url: 'api/photos',
+      type: 'GET',
+      data_type: 'json',
+      data: {tag_names: tagNames},
+      success: function(resp) {
+        success(resp);
+      },
+      error: function(resp) {
+        error("fetchAllPhotos",resp);
+      }
+    });
+  },
   fetchPhoto(id, success, error){
     $.ajax({
       url: `api/photos/${id}`,

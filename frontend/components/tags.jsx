@@ -3,6 +3,8 @@ const TagStore = require('../stores/tag_store');
 const SessionStore = require('../stores/session_store');
 const TagActions = require('../actions/tag_actions');
 const TagForm = require('./tag_form');
+const ReactRouter = require('react-router');
+const hashHistory = ReactRouter.hashHistory;
 
 
 
@@ -27,14 +29,21 @@ const PhotoTags = React.createClass({
   belongsToUser(){
     return (this.state.currentUserId === this.props.userId);
   },
+  getTagPhotos(tagNames){
+    hashHistory.push({
+      pathname: "search",
+      query: {tagNames:tagNames}
+    });
+  },
   tags(){
     return this.state.tags.map((tag)=>{
       return(
           <li key={tag.id} className="tag">
-            <a>{tag.name}
-              {this.belongsToUser() ?
-              <button onClick={this.removeTag.bind(null,tag.id)}>x</button> : ""}
+            <a onClick={this.getTagPhotos.bind(null, tag.name)}>{tag.name}
+
             </a>
+            {this.belongsToUser() ?
+            <button onClick={this.removeTag.bind(null,tag.id)}>x</button> : ""}
           </li>);
     });
   },

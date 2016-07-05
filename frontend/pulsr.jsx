@@ -20,6 +20,7 @@ const PhotoShow = require('./components/photo_show');
 const Albums = require('./components/albums');
 const AlbumShow = require('./components/album_show');
 const UserPhotos = require('./components/user_photos');
+const FilteredPhotos = require("./components/filtered_photos");
 
 //actions
 const SessionActions = require('./actions/session_actions');
@@ -57,6 +58,7 @@ const appRouter = (
       <Route path="/albums" component={Albums} onEnter={_ensureLoggedIn}></Route>
       <Route path="/albums/:albumId" component={AlbumShow}></Route>
       <Route path="/photostream" component={UserPhotos}></Route>
+      <Route path="/search" component={FilteredPhotos}></Route>
     </Route>
   </Router>
 );
