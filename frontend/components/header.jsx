@@ -88,7 +88,7 @@ const Header = React.createClass({
               <span>Explore</span>
               <div className="dropdown-content">
                 <ul>
-                  <li><Link to={"/"}>Cameraroll</Link></li>
+                  <li><Link to={"/photostream"}>Cameraroll</Link></li>
                   <li><Link to={"/albums"}>Albums</Link></li>
                 </ul>
 
