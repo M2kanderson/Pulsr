@@ -40,6 +40,7 @@ const LoginForm = React.createClass({
     this.setState({password: e.target.value});
   },
   _addUsername(){
+    this.setState({guest: false});
     let username = "guest";
     let password = "guestlogin";
     let index = 1;
@@ -72,7 +73,6 @@ const LoginForm = React.createClass({
     if(this.state.guest === "true")
     {
       this._addUsername();
-      this.setState({guest: false});
       //
       // SessionActions.login({username: "guest",
       //                       password: "guestlogin"});

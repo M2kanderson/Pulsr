@@ -68,6 +68,7 @@ const Header = React.createClass({
     }else {
         return (
           <div className="header-right">
+            <img className="user-icon-header" src={this.state.currentUser.icon}></img>
             <button className="signout_button"
                     onClick={this._logout}>Sign Out</button>
           </div>
@@ -84,7 +85,7 @@ const Header = React.createClass({
               <div className="dropdown-content">
                 <ul>
                   <li><Link to={"/"}>Cameraroll</Link></li>
-                  <li><Link to={"/"}>Albums</Link></li>
+                  <li><Link to={"/albums"}>Albums</Link></li>
                 </ul>
 
               </div>

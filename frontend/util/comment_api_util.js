@@ -8,7 +8,25 @@ const CommentApiUtil = {
         success(resp);
       },
       error: function(resp) {
-        error("fetchAll",resp);
+        error("fetchAllComments",resp);
+      }
+    });
+  },
+  fetchPhotoComments(photoId, success, error){
+    if(!photoId)
+    {
+      photoId = -1;
+    }
+    $.ajax({
+      url: 'api/comments',
+      type: 'GET',
+      data_type: 'json',
+      data: {photo_id: photoId},
+      success: function(resp) {
+        success(resp);
+      },
+      error: function(resp) {
+        error("fetchAllComments",resp);
       }
     });
   },
@@ -21,7 +39,7 @@ const CommentApiUtil = {
         success(resp);
       },
       error: function(resp) {
-        error("fetch",resp);
+        error("fetchComment",resp);
       }
     });
   },
@@ -35,7 +53,7 @@ const CommentApiUtil = {
         success(resp);
       },
       error: function(resp) {
-        error("create",resp);
+        error("createComment",resp);
       }
     });
   },
@@ -49,7 +67,7 @@ const CommentApiUtil = {
         success(resp);
       },
       error: function(resp) {
-        error("update",resp);
+        error("updateComment",resp);
       }
     });
   },
@@ -62,7 +80,7 @@ const CommentApiUtil = {
         success(resp);
       },
       error: function(resp) {
-        error("delete",resp);
+        error("deleteComment",resp);
       }
     });
   }

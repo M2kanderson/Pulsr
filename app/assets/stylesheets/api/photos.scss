@@ -1,3 +1,86 @@
 // Place all the styles related to the api/photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.photo-show-user, .photo-show-title{
+  padding-left: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 20px;
+}
+.photo-show-info{
+  width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #f3f5f6;
+  color: #212124;
+  display: block;
+  font-size: 100%;
+}
+
+.photo-info-item{
+  display: inline;
+}
+
+.photo-show-title{
+  font-size: 16px;
+  font-weight: 600px;
+}
+.photo-show-description{
+  padding-left: 20px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  width: 500px;
+}
+
+.album-photo img{
+  max-height: 300px;
+}
+
+.photo-slider-container{
+  margin: 0 auto;
+  padding: 40px;
+  width: 80%;
+  color: #333;
+  background: #262626;
+}
+
+.photo-slider-container img{
+  max-width: 95%;
+  margin-left: 1px;
+  cursor: pointer;
+}
+.add-photo{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height:70px;
+  border: 1px dashed #00ccff;
+  font-size: 40px;
+  color: #00ccff;
+}
+.photo-left-view{
+  position: relative;
+  margin-right: 60px;
+  margin-bottom: 120px;
+  width: 500px;
+  float:left;
+  display: block;
+  color: #212124;
+  font-size: 100%;
+}
+
+.photo-right-view{
+  margin-top: 1em;
+  margin-bottom: 120px;
+  float: left;
+  width: 500px;
+  display: block;
+  color: #212124;
+  font-size: 100%;
+}

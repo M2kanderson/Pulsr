@@ -8,34 +8,37 @@ const CommentActions = {
   fetchAllComments(){
     CommentApiUtil.fetchAllComments(this.receiveAllComments, ErrorActions.setErrors);
   },
+  fetchPhotoComments(photoId){
+    CommentApiUtil.fetchPhotoComments(photoId,this.receiveAllComments, ErrorActions.setErrors);
+  },
   fetchComment(id){
     CommentApiUtil.fetchComment(id, this.receiveComment, ErrorActions.setErrors);
   },
-  createComment(photo){
-    CommentApiUtil.createComment(photo,this.receiveComment, ErrorActions.setErrors);
+  createComment(comment){
+    CommentApiUtil.createComment(comment,this.receiveComment, ErrorActions.setErrors);
   },
-  updateComment(photo){
-    CommentApiUtil.updateComment(photo,this.receiveComment, ErrorActions.setErrors);
+  updateComment(comment){
+    CommentApiUtil.updateComment(comment,this.receiveComment, ErrorActions.setErrors);
   },
   deleteComment(id){
-    CommentApiUtil.createComment(id,this.removeComment, ErrorActions.setErrors);
+    CommentApiUtil.deleteComment(id,this.removeComment, ErrorActions.setErrors);
   },
-  receiveAllComments(photos){
+  receiveAllComments(comments){
     AppDispatcher.dispatch({
       actionType: CommentConstants.COMMENTS_RECEIVED,
-      photos: photos
+      comments: comments
     });
   },
-  receiveComment(photo){
+  receiveComment(comment){
     AppDispatcher.dispatch({
       actionType: CommentConstants.COMMENT_RECEIVED,
-      photo: photo
+      comment: comment
     });
   },
-  removeComment(photo){
+  removeComment(comment){
     AppDispatcher.dispatch({
       actionType: CommentConstants.COMMENT_REMOVED,
-      photo: photo
+      comment: comment
     });
   },
 };

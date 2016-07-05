@@ -8,7 +8,25 @@ const PhotoApiUtil = {
         success(resp);
       },
       error: function(resp) {
-        error("fetchAll",resp);
+        error("fetchAllPhotos",resp);
+      }
+    });
+  },
+  fetchUserPhotos(userId, success, error){
+    if(!userId)
+    {
+      userId = -1;
+    }
+    $.ajax({
+      url: 'api/photos',
+      type: 'GET',
+      data_type: 'json',
+      data: {user_id: userId},
+      success: function(resp) {
+        success(resp);
+      },
+      error: function(resp) {
+        error("fetchAllPhotos",resp);
       }
     });
   },
@@ -21,7 +39,7 @@ const PhotoApiUtil = {
         success(resp);
       },
       error: function(resp) {
-        error("fetch",resp);
+        error("fetchPhoto",resp);
       }
     });
   },
@@ -35,7 +53,7 @@ const PhotoApiUtil = {
         success(resp);
       },
       error: function(resp) {
-        error("create",resp);
+        error("createPhoto",resp);
       }
     });
   },
@@ -49,7 +67,7 @@ const PhotoApiUtil = {
         success(resp);
       },
       error: function(resp) {
-        error("update",resp);
+        error("updatePhoto",resp);
       }
     });
   },
@@ -62,7 +80,7 @@ const PhotoApiUtil = {
         success(resp);
       },
       error: function(resp) {
-        error("delete",resp);
+        error("deletePhoto",resp);
       }
     });
   }

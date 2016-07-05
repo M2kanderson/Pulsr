@@ -1,3 +1,21 @@
 // Place all the styles related to the api/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-icon{
+  left: -80px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  padding: 15px;
+  // float: left;
+}
+
+.user-icon-header{
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+  margin-right: 10px;
+  z-index: 3;
+  float: right;
+}

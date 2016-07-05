@@ -1,3 +1,318 @@
 // Place all the styles related to the api/comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comment-actions{
+  display: inline-block;
+  position: absolute;
+  right: 13px;
+  top: 20px;
+  line-height: 1.3;
+  font-size: 16px;
+  font-weight: 400;
+}
+.comment-actions a{
+  display: inline-block;
+  position: relative;
+  opacity: .47;
+  margin-right: 8px;
+  top: 1px;
+}
+.comment-edit{
+  cursor: pointer;
+  display: inline-block;
+  background-image: url('https://s.yimg.com/uy/build/images/sprites/scrappy@2x-5ca495c2.png');
+  background-size: 214px 204px;
+  background: url('https://s.yimg.com/uy/build/images/sprites/scrappy-10271d4f.png') -160px -151px no-repeat;
+  width: 16px;
+  height: 16px;
+}
+.comment-delete{
+  cursor: pointer;
+  display: inline-block;
+  background-image: url('https://s.yimg.com/uy/build/images/sprites/scrappy@2x-5ca495c2.png');
+  background-size: 214px 204px;
+  background: url(https://s.yimg.com/uy/build/images/sprites/scrappy-10271d4f.png) -172px -84px no-repeat;
+  width: 16px;
+  height: 18px;
+}
+.comments-view{
+  margin-left: 18px;
+  clear: both;
+  border-top: 1px solid transparent;
+  margin-bottom: 20px;
+  display: block;
+  color: #212124;
+  font-size: 100%;
+}
+
+.comments-container{
+  display: block;
+  color: #212124;
+  font-size: 100%;
+}
+
+.comments{
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  // -webkit-padding-start: 40px;
+}
+
+.comment-header{
+  border-top: 1px solid #cfd6d9;
+  padding-top: 20px;
+  font-size: 20px;
+}
+.comment, .comment-editing{
+  padding: 0px 0 5px 60px;
+  min-height: 32px;
+  position: relative;
+  transition: background-color 150ms ease-in-out;
+  overflow: hidden;
+  font-size: 100%;
+}
+
+.comment-icon{
+  top: 10px;
+  position: absolute;
+  left: 0;
+  display: block;
+  margin-left: 10px;
+  border-radius: 50%;
+  text-align: -webkit-match-parent;
+  list-style: none;
+  font-size: 100%;
+
+}
+.comment-icon:after{
+  border: 1px solid rgba(255,255,255,0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: 50%;
+  content: '';
+  pointer-events: none;
+}
+.comment-icon img{
+  display: block;
+  border-radius: 50%;
+  border: 0;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  list-style: none;
+}
+.comment:hover{
+  background-color: white;
+}
+
+.comment-author{
+  margin: 2px 0 2px 20px;
+  line-height: 1.3;
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  text-align: -webkit-match-parent;
+  list-style: none;
+  color: #006dac;
+}
+.comment-author a{
+  position: relative;
+  top: -1px;
+  color: #006dac;
+  line-height: 24px;
+  font-weight: 600;
+  font-size: 14px;
+  direction: ltr;
+  text-decoration: none;
+  cursor: pointer;
+}
+.comment-author a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.comment-date{
+  line-height: 18px;
+  color: #898989;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 10px;
+  text-align: -webkit-match-parent;
+  list-style: none;
+}
+
+.comment-body{
+  overflow: hidden;
+  word-wrap: break-word;
+  margin-right: 17px;
+  font-weight: 400;
+  line-height: 18px;
+  font-size: 14px;
+  margin-top: -5px;
+  display: block;
+  text-align: -webkit-match-parent;
+  list-style: none;
+}
+
+.comments-form{
+  position: relative;
+  margin: 15px 10px 0 0;
+  display: block;
+}
+
+.comment-form-field{
+  margin: 0 9px 0 61px;
+  position: relative;
+  display: block;
+  font-size: 100%;
+}
+
+.comment-form-field textarea{
+  border: 0;
+  position: relative;
+  top: -1px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  outline: 0;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  box-shadow: inset 0 0 0 1px #9ea4a7;
+  resize: none;
+  height: 80px;
+  width: 98.2%;
+  line-height: 18px;
+  margin-bottom: 5px;
+  overflow: auto;
+  vertical-align: top;
+  margin: 0;
+  flex-direction: column;
+  cursor: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+}
+
+.comment-form-field textarea:focus{
+  box-shadow: inset 0 0 0 1px #008ddf;
+}
+
+.comment-arrow{
+  position: absolute;
+  width: 10px;
+  height: 21px;
+  overflow: hidden;
+  top: 10px;
+  left: -9px;
+  display: block;
+}
+
+.comment-arrow:focus{
+  background-color: blue;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.comment-arrow::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  background: #fff;
+  border: 1px solid #9ea4a7;
+  transform: rotate(45deg);
+  transition: background-color 150ms ease-in-out;
+}
+
+.comment-button{
+  display: block;
+  float: right;
+  margin-right: 7px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 32px;
+  transition: background-color 150ms ease-in-out;
+  min-width: 100px;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  background: #0091dc;
+  color: #fff;
+  border-color: transparent;
+  box-sizing: border-box;
+  vertical-align: top;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  align-items: flex-start;
+}
+
+.edit-comment-form textarea{
+  position: relative;
+  top: -1px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  border: 0;
+  border-radius: 3px;
+  resize: none;
+  outline: 0;
+  box-shadow: inset 0 0 0 1px #9ea4a7;
+  margin-top: 5px;
+  width: 94%;
+  margin-bottom: 5px;
+}
+
+.edit-comment-form textarea:focus{
+  -webkit-appearance: none;
+  box-shadow: inset 0 0 0 1px #008ddf
+}
+.comment-edit-button:hover{
+  background: #1c9be9;
+  text-decoration: none;
+  border-color: rgba(255,255,255,0.3);
+}
+
+.comment-edit-button{
+  background: #128fdc;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  border-radius: 3px;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 150ms ease-in-out;
+  height: 32px;
+  min-width: 100px;
+  margin-top: 10px;
+  margin-left: 296px;
+  padding: 0 0.5em;
+}

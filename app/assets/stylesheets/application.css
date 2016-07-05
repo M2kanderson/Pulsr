@@ -35,6 +35,19 @@
    font-size: 100%;
    font: inherit;
    vertical-align: baseline;
+   list-style: none;
+ }
+ html{
+   display: block;
+ }
+
+ textarea{
+   overflow: auto;
+   vertical-align: top;
+   margin: 0;
+   white-space: pre-wrap;
+   word-wrap: break-word;
+   text-align: start;
  }
 
  a{
@@ -46,6 +59,11 @@
    list-style-type: none;
    padding: 0px;
    margin: 0px;
+ }
+ body{
+   min-width: 1060px;
+   position: relative;
+   background-color: #f3f5f6
  }
 
 /*signup signin forms*/
@@ -117,7 +135,7 @@ header{
    display: block;
  }
 
-.signup_button, .signin_button, .guest_button, .signout_button {
+.signup_button, .signin_button, .guest_button, .signout_button{
   color: white;
   background-color: #128fdc;
   border-radius: 3px;
@@ -140,17 +158,22 @@ header{
 }
 
 .signin_button{
-
   background-color: black;
   padding: 0px 20px;
   margin: 10px;
-
+}
+.signout_button{
+  margin-right: 40px;
 }
 
 .guest_button{
   background-color: green;
   padding: 0px 20px;
   margin: 10px;
+}
+
+.comment_button{
+  margin-left: 0px;
 }
 
 
@@ -179,28 +202,45 @@ header{
 }
 
 /*photos index*/
-
-.photos-images, .photo-detail{
+.photos-index{
+  width:100%;
   display: flex;
   flex-direction:column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+}
+
+.photos-images{
+  margin:10px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: white;
+  width: 800px;
+}
+.photo-show{
+  background-color: #262626;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
 }
 .photos_image{
-
+  cursor: pointer;
   max-width: 800px;
 }
 
-.photo_image_detail{
+.photo_image_show{
+  margin-top: 30px;
   max-height: 400px;
 }
 
-.photo_image_detail:hover{
+.photo_image_show:hover{
   cursor: zoom-in;
 }
 
 .popout-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%
 
 }
@@ -210,4 +250,8 @@ header{
   max-width:100%;
   max-height:100%;
   cursor: zoom-out;
+}
+
+.edit-icon{
+  width: 20px;
 }

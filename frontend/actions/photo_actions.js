@@ -8,6 +8,9 @@ const PhotoActions = {
   fetchAllPhotos(){
     PhotoApiUtil.fetchAllPhotos(this.receiveAllPhotos, ErrorActions.setErrors);
   },
+  fetchUserPhotos(userId){
+    PhotoApiUtil.fetchUserPhotos(userId,this.receiveAllPhotos, ErrorActions.setErrors);
+  },
   fetchPhoto(id){
     PhotoApiUtil.fetchPhoto(id, this.receivePhoto, ErrorActions.setErrors);
   },
@@ -18,7 +21,7 @@ const PhotoActions = {
     PhotoApiUtil.updatePhoto(photo,this.receivePhoto, ErrorActions.setErrors);
   },
   deletePhoto(id){
-    PhotoApiUtil.createPhoto(id,this.removePhoto, ErrorActions.setErrors);
+    PhotoApiUtil.deletePhoto(id,this.removePhoto, ErrorActions.setErrors);
   },
   receiveAllPhotos(photos){
     AppDispatcher.dispatch({

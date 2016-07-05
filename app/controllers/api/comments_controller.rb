@@ -2,10 +2,13 @@ class Api::CommentsController < ApplicationController
 
   def index
     @comments = Comment.all()
+    if(params[:photo_id])
+      @comments = @comments.where(photo_id: params[:photo_id])
+    end
   end
 
   def show
-    @comment = Comment.find_by_id(params:id)
+    @comment = Comment.find_by_id(params[:id])
   end
 
   def create
@@ -18,7 +21,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find_by_id(params:id)
+    @comment = Comment.find_by_id(params[:id])
     if(@comment.update(comment_params))
       render :show
     else
@@ -27,7 +30,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find_by_id(params:id)
+    @comment = Comment.find_by_id(params[:id])
     if(@comment)
       @comment.destroy
       render :show

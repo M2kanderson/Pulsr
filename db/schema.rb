@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630022336) do
+ActiveRecord::Schema.define(version: 20160703185553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "albums", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.string   "title",       null: false
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "albums", ["user_id"], name: "index_albums_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -29,11 +39,11 @@ ActiveRecord::Schema.define(version: 20160630022336) do
 
   create_table "photos", force: :cascade do |t|
     t.string   "title",                       null: false
-    t.text     "description",                 null: false
+    t.text     "description"
     t.boolean  "public",      default: false, null: false
     t.string   "url",                         null: false
     t.integer  "user_id",                     null: false
-    t.integer  "album_id",                    null: false
+    t.integer  "album_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
@@ -41,15 +51,32 @@ ActiveRecord::Schema.define(version: 20160630022336) do
   add_index "photos", ["album_id"], name: "index_photos_on_album_id", using: :btree
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "photo_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "taggings", ["photo_id", "tag_id"], name: "index_taggings_on_photo_id_and_tag_id", unique: true, using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "firstname",       null: false
-    t.string   "lastname",        null: false
-    t.string   "session_token",   null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "username",                                                                                                      null: false
+    t.string   "firstname",                                                                                                     null: false
+    t.string   "lastname",                                                                                                      null: false
+    t.string   "session_token",                                                                                                 null: false
+    t.string   "email",                                                                                                         null: false
+    t.string   "password_digest",                                                                                               null: false
+    t.datetime "created_at",                                                                                                    null: false
+    t.datetime "updated_at",                                                                                                    null: false
+    t.string   "icon",            default: "http://res.cloudinary.com/pulsr/image/upload/v1467306727/camera-icon-2_dc0oce.png"
   end
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
