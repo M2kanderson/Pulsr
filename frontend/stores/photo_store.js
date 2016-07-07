@@ -1,6 +1,7 @@
 const Store = require('flux/utils').Store;
 const AppDispatcher = require('../dispatcher/dispatcher');
 const PhotoConstants = require('../constants/photo_constants');
+const AlbumConstants = require('../constants/album_constants');
 
 let _photos = {};
 const PhotoStore = new Store(AppDispatcher);
@@ -30,6 +31,13 @@ function _removePhotos(photos){
   PhotoStore.__emitChange();
 }
 
+function _addAlbumPhotos(album, photoIds){
+  photoIds.forEach((photoId) =>{
+    let photo = PhotoStore.find(photoId);
+    photo.album_id = album.id;
+  });
+}
+
 PhotoStore.all = function(){
   let photoArray = [];
   Object.keys(_photos).forEach((id) =>{
@@ -56,6 +64,9 @@ PhotoStore.__onDispatch = function(payload){
     break;
     case PhotoConstants.PHOTOS_REMOVED:
     _removePhotos(payload.photos);
+    break;
+    case AlbumConstants.ALBUM_WITH_PHOTOS_RECEIVED:
+    _addAlbumPhotos(payload.album, payload.photoIds);
     break;
   }
 };

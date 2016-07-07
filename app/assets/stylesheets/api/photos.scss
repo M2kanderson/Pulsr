@@ -277,7 +277,6 @@
   width: inherit;
   bottom: 0px;
   position: fixed;
-  z-index: 100;
   min-width: 720px;
   background-color: rgba(255,255,255,0.95);
   border: 1px solid #fff;
@@ -285,7 +284,6 @@
   border-radius: 3px 3px 0 0;
   overflow: hidden;
   height: 150px;
-
 }
 
 .photo-select-view p{

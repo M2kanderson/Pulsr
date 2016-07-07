@@ -18,6 +18,11 @@ class Api::AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     if(@album.save)
+      params[:photo_ids].each do |photo_id|
+        photo = Photo.find_by_id(photo_id)
+        photo.album_id = @album.id
+        photo.save
+      end
       render :show
     else
       render json: @album.errors, status: 422

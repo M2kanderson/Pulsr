@@ -16,7 +16,7 @@ module.exports ={
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)',
     backgroundColor : '#eee',
-    border: '1px solide #ccc',
+    border: '1px solid #ccc',
     background : '#fff',
     borderRadius : '4px',
     outline : 'none',

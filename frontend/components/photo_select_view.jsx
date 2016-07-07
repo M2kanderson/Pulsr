@@ -10,7 +10,8 @@ const AlbumModal = require("./album_modal");
 const PhotoSelectView = React.createClass({
   getInitialState: function() {
     return {
-      photoIds: this.props.photoIds
+      photoIds: this.props.photoIds,
+      openModal: false
     };
   },
   componentWillReceiveProps(){
@@ -20,7 +21,10 @@ const PhotoSelectView = React.createClass({
     PhotoActions.deletePhotos(this.props.photoIds);
   },
   addToAlbum(){
-    return <AlbumModal />;
+    this.setState({openModal: true});
+  },
+  closeModal(){
+    this.setState({openModal: false});
   },
   render: function() {
     let photos= this.props.photoIds.map((photoId) => {
@@ -56,6 +60,8 @@ const PhotoSelectView = React.createClass({
           <a className="clearSelection"
             onClick={this.props.clearSelection}>Clear Selection</a>
         </div>
+        <AlbumModal openModal={this.state.openModal}
+               photoIds={this.props.photoIds} closeModal={this.closeModal}/>
       </div>
     );
   }

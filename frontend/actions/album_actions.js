@@ -20,6 +20,9 @@ const AlbumActions = {
   createAlbum(album){
     AlbumApiUtil.createAlbum(album,this.receiveAlbum, ErrorActions.setErrors);
   },
+  createAlbumWithPhotos(album, photoIds){
+    AlbumApiUtil.createAlbumWithPhotos(album,photoIds,this.receiveAlbum, ErrorActions.setErrors);
+  },
   updateAlbum(album){
     AlbumApiUtil.updateAlbum(album,this.receiveAlbum, ErrorActions.setErrors);
   },

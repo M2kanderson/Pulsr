@@ -1,6 +1,8 @@
 const Store = require('flux/utils').Store;
 const AppDispatcher = require('../dispatcher/dispatcher');
 const AlbumConstants = require('../constants/album_constants');
+const PhotoConstants = require('../constants/photo_constants');
+const PhotoStore = require('../stores/photo_store');
 
 let _albums = {};
 const AlbumStore = new Store(AppDispatcher);
@@ -16,6 +18,15 @@ function _resetAlbums(albums){
 function _addAlbum(album){
   _albums[album.id] = album;
   AlbumStore.__emitChange();
+}
+
+
+function _updateAlbum(photo){
+  if(photo.album_id)
+  {
+    _albums[photo.album_id].photos.push(photo);
+    AlbumStore.__emitChange();
+  }
 }
 
 function _removeAlbum(album){
@@ -46,6 +57,9 @@ AlbumStore.__onDispatch = function(payload){
     break;
     case AlbumConstants.ALBUM_REMOVED:
     _removeAlbum(payload.album);
+    break;
+    case PhotoConstants.PHOTO_RECEIVED:
+    _updateAlbum(payload.photo);
     break;
   }
 };

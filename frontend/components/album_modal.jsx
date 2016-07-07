@@ -1,31 +1,74 @@
 const React = require('react');
-const AlbumActions = require('../actions/photo_actions');
+const AlbumStore = require('../stores/album_store');
+const AlbumActions = require('../actions/album_actions');
+const PhotoActions = require('../actions/photo_actions');
+const PhotoStore = require('../stores/photo_store');
+const SessionStore = require('../stores/session_store');
 const Modal = require('react-modal');
-const ModalStyle = require("../modal_style");
+const AlbumModalStyle = require("../album_modal_style");
+const AlbumForm = require("./album_form");
 
 
 
 const AlbumModal = React.createClass({
   getInitialState: function() {
     return {
-      photos: this.props.albums
+      albums: AlbumStore.all(),
+      openModal: this.props.openModal,
+      albumForm: false
     };
   },
+  componentWillMount(){
+    this.albumListener = AlbumStore.addListener(this._onChange);
+    AlbumActions.fetchUserAlbums(SessionStore.current_user().id);
+  },
+  _onChange(){
+    this.setState({albums: AlbumStore.all(), albumForm: false});
+  },
+  componentWillUnmount(){
+    this.albumListener.remove();
+  },
+  componentWillReceiveProps(){
+    this.setState({openModal:this.props.openModal});
+  },
   onModalClose(){
-    ModalStyle.content.opacity = 0;
-    this.setState({modalOpen: false});
+    AlbumModalStyle.content.opacity = 0;
+    this.props.closeModal();
   },
   onModalOpen(){
-    ModalStyle.content.opacity = 100;
+    AlbumModalStyle.content.opacity = 100;
+  },
+  addToAlbum(albumId){
+    this.props.photoIds.forEach((photoId) =>{
+      let photo = PhotoStore.find(photoId);
+      photo.album_id = albumId;
+      PhotoActions.updatePhoto(photo);
+    });
+
+  },
+  createAlbum(){
+    this.setState({albumForm: true});
+  },
+  closeAlbumForm(){
+    this.setState({albumForm: false});
   },
   albums(){
     return this.state.albums.map((album)=>{
       return(
-        <div className="album" key={album.id}>
-          <img className="album_image"
-               src={album.photos[0].url}
-               onClick={this._onClick.bind(this, album.id)}></img>
-          <span>{album.title}</span>
+        <div className="album-selection-list-item"
+             key={album.id}
+             onClick={this.addToAlbum.bind(null, album.id)}>
+          <div className="album-selection-list-item-container">
+            <img className="album-selection-list-item-icon"
+                 src={album.photos[0].url}></img>
+          </div>
+         <div className="album-selection-list-item-labels">
+           <span className="album-selection-list-item-title">{album.title}
+           </span>
+           <span className="album-selection-list-item-stats">
+             {album.photos.length} item(s)</span>
+         </div>
+
         </div>);
     });
   },
@@ -35,19 +78,28 @@ const AlbumModal = React.createClass({
         Add this photo to an album
       </div>
       <div className="album-modal-body">
-        <p>Create new album</p>
-        {this.albums()}
+        <div className="album-selection-list">
+          <li onClick={this.createAlbum}
+            className="album-selection-list-item">
+            <span className="album-selection-list-item-title">
+              Create new album</span>
+          </li>
+          {this.albums()}
+        </div>
       </div>
     </div>);
   },
   albumModal(){
+    let form = this.state.albumForm ?
+     <AlbumForm closeAlbumForm={this.closeAlbumForm}
+                photoIds={this.props.photoIds} /> : this.modalView();
     return <Modal
-       isOpen={this.state.modalOpen}
+       isOpen={this.props.openModal}
        onRequestClose={this.onModalClose}
-       style={ModalStyle}
+       style={AlbumModalStyle}
        onAfterOpen={this.onModalOpen}>
-      <button onClick={this.onModalClose}>X</button>
-      {this.modalView()}
+      <span className="close-x" onClick={this.onModalClose}>X</span>
+      {form}
     </Modal>;
   },
   render: function() {

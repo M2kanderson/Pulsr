@@ -75,6 +75,20 @@ const AlbumApiUtil = {
       }
     });
   },
+  createAlbumWithPhotos(album, photoIds, success, error){
+    $.ajax({
+      url: 'api/albums',
+      type: 'POST',
+      data_type: 'json',
+      data: {album: album, photo_ids: photoIds},
+      success: function(resp) {
+        success(resp, photoIds);
+      },
+      error: function(resp) {
+        error("createAlbum",resp);
+      }
+    });
+  },
   updateAlbum(album, success, error){
     $.ajax({
       url: `api/albums/${album.id}`,
