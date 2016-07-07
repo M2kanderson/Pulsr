@@ -27,6 +27,9 @@ const PhotoActions = {
   deletePhoto(id){
     PhotoApiUtil.deletePhoto(id,this.removePhoto, ErrorActions.setErrors);
   },
+  deletePhotos(ids){
+    PhotoApiUtil.deletePhotos(ids,this.removePhotos, ErrorActions.setErrors);
+  },
   receiveAllPhotos(photos){
     AppDispatcher.dispatch({
       actionType: PhotoConstants.PHOTOS_RECEIVED,
@@ -45,6 +48,12 @@ const PhotoActions = {
       photo: photo
     });
   },
+  removePhotos(photos){
+    AppDispatcher.dispatch({
+      actionType: PhotoConstants.PHOTOS_REMOVED,
+      photos: photos
+    });
+  }
 };
 
 module.exports = PhotoActions;

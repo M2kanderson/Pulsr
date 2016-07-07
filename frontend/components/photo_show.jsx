@@ -8,6 +8,7 @@ const PhotoDetail = require('./photo_detail');
 const Comments = require('./comments');
 const Tags = require('./tags');
 const PhotoAlbums = require("./photo_albums");
+const PhotoInfo = require("./photo_info");
 
 
 let sliderSettings ={
@@ -140,6 +141,11 @@ const PhotoShow = React.createClass({
       }
 
   },
+  // <img className="user-icon" src={this.state.user.icon}></img>
+  // <p className="photo-show-user">
+  //   {this.state.user.firstname}  {this.state.user.lastname}</p>
+  // {this.renderItemOrEditField("title")}
+  // {this.renderItemOrEditField("description")}
   render: function() {
     let images = this.state.albumPhotos.map((photo) =>{
       return <img className="photo_image_show"
@@ -156,11 +162,7 @@ const PhotoShow = React.createClass({
         <div className="photo-show-info">
 
           <div className="photo-left-view">
-            <img className="user-icon" src={this.state.user.icon}></img>
-            <p className="photo-show-user">
-              {this.state.user.firstname}  {this.state.user.lastname}</p>
-            {this.renderItemOrEditField("title")}
-            {this.renderItemOrEditField("description")}
+            <PhotoInfo photo={this.state.photo} user={this.state.user}></PhotoInfo>
             <div className="comments-view">
               <Comments photoId={this.props.params.photoId}/>
             </div>

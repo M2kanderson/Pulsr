@@ -2,17 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.photo-show-user, .photo-show-title{
-  padding-left: 20px;
+.photo-info-view{
+  display: flex;
+  flex-direction: row;
+}
+.photo-author, .photo-title{
   font-weight: 600;
-  margin-top: 20px;
+  margin-bottom: 20px;
   font-size: 20px;
   font-family: 'Lato', sans-serif;
-  margin-bottom: 20px;
 }
-.photo-show-info{
-  width: 1060px;
+
+.photo-author{
+  margin-top: 20px;
+
+  display: inline-block;
+}
+.photo-info{
+  width: 400px;
   margin-left: auto;
   margin-right: auto;
   background: #f3f5f6;
@@ -20,20 +27,75 @@
   display: block;
   font-size: 100%;
 }
-
-.photo-info-item{
-  display: inline;
+.photo-info:hover{
+  background-color: rgba(0,0,0,0.05);
 }
 
-.photo-show-title{
+.photo-info-edit{
+  cursor: pointer;
+  display: inline-block;
+  background-image: url('https://s.yimg.com/uy/build/images/sprites/scrappy@2x-5ca495c2.png');
+  background-size: 214px 204px;
+  background: url('https://s.yimg.com/uy/build/images/sprites/scrappy-10271d4f.png') -160px -151px no-repeat;
+  width: 16px;
+  height: 16px;
+}
+
+.photo-info-actions{
+  display: inline-block;
+  position: absolute;
+  right: 13px;
+  top: 65px;
+  line-height: 1.3;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.photo-info-container{
+  width: 100%;
+}
+
+.photo-title{
+  font-family: 'Lato', sans-serif;
   font-size: 16px;
   font-weight: 600px;
 }
-.photo-show-description{
-  padding-left: 20px;
+.photo-description{
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   width: 500px;
+}
+
+.edit-photo-title{
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 18px;
+  min-height: 32px;
+  padding: 0 0 0 10px;
+  display: block;
+  outline: none;
+  border: 0;
+  border-radius: 3px;
+  width: 97.4%;
+  box-shadow: inset 0 0 0 1px #9ea4a7;
+  overflow: hidden;
+}
+.edit-photo-description{
+  height: 28px;
+  min-height: 80px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 18px;
+  padding: 10px;
+  width: 97.4%;
+  overflow: auto;
+  display: block;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px #9ea4a7;
+  resize: none;
+  outline: none;
 }
 
 .album-photo img{
@@ -121,6 +183,7 @@
 .photos-grid-item img {
   display: block;
   max-width: 100%;
+  padding: 3px;
 }
 
 .search-container{
@@ -137,4 +200,209 @@
   margin-left: 80px;
   font-size: 18px;
   font-family: 'Lato', sans-serif;
+}
+
+//cameraroll
+.cameraroll-index{
+  height: 100%;
+}
+.cameraroll-container{
+  margin-top: 50px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cameraroll-photos{
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;;
+  align-items: center;
+  margin-bottom: 150px;
+}
+
+.cameraroll-photo-container, .selected-photos{
+  margin: 5px;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.cameraroll-photo-container:hover{
+  border: 2px solid blue;
+  opacity: 0.8;
+}
+.selected{
+  border: 2px solid blue;
+}
+
+.select-check{
+  border-color: white;
+  transform: rotate(-45deg);
+  transition: border-color 150ms ease-in-out;
+  box-sizing: border-box;
+  width: 20px;
+  height: 12px;
+  left: 50%;
+  top: 50%;
+  margin-left: -10px;
+  margin-top: -6px;
+  border-left: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  display: block;
+  content: '';
+  position: absolute;
+}
+.check-selected{
+  border-left: 4px solid white;
+  border-bottom: 4px solid white;
+}
+
+.cameraroll-photo{
+  max-height: 100%;
+}
+
+//photo select view
+.photo-select-view{
+  left: 120px;
+  right: 120px;
+  margin-left: 0px;
+  width: inherit;
+  bottom: 0px;
+  position: fixed;
+  z-index: 100;
+  min-width: 720px;
+  background-color: rgba(255,255,255,0.95);
+  border: 1px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+  height: 150px;
+
+}
+
+.photo-select-view p{
+  position: relative;
+  top: -100px;
+}
+
+
+.cameraroll-tray{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  left: 0px;
+  margin-bottom: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
+  white-space: nowrap;
+  position: relative;
+  height: 50px;
+  transition-property: left;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+
+
+.selected-photo{
+  position: relative;
+  background: rgba(0,0,0,0.15);
+  margin-left: 3px;
+  margin-right: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+.selected-photo img{
+  height: 100%;
+}
+
+.number-of-selected-photos{
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-top: 10px;
+  min-height: 20px;
+  font-size: 15px;
+  color: #737b80;
+  display: block;
+}
+
+.selection-tray-tools{
+  padding-left: 20px;
+  padding-right: 20px;
+  display: block;
+}
+
+.cameraroll-delete-view{
+  float: right;
+  margin-right: 0;
+}
+
+.cameraroll-album-view{
+  float: left;
+  margin-right: 40px;
+  display: block;
+}
+
+.delete-selected-photos span{
+  color: #e02c33;
+  font-size: 15px;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.delete-selected-photos-icon{
+  cursor: pointer;
+  background-image: url(https://s.yimg.com/uy/build/images/sprites/cameraroll@2x-32e63773.png);
+  background-size: 162px 140px;
+  background: url(https://s.yimg.com/uy/build/images/sprites/cameraroll-471293c0.png) -130px -58px no-repeat;
+  width: 16px;
+  height: 18px;
+  margin-right: 3px;
+  display: inline-block;
+}
+
+.clearSelection{
+  color: #737b80;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.clearSelection:hover{
+  color: #006dac;
+  text-decoration: underline;
+}
+
+.album-selected-photos-icon{
+  background-image: url(https://s.yimg.com/uy/build/images/sprites/cameraroll@2x-32e63773.png);
+  background-size: 162px 140px;
+  background: url(https://s.yimg.com/uy/build/images/sprites/cameraroll-471293c0.png) -130px -21px no-repeat;
+  width: 18px;
+  height: 18px;
+  margin-right: 3px;
+}
+
+.album-selected-photos span{
+  vertical-align: top;
+  font-size: 15px;
+  color: #737b80;
+}
+.album-selected-photos{
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
 }

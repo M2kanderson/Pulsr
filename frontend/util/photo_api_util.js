@@ -101,6 +101,19 @@ const PhotoApiUtil = {
         error("deletePhoto",resp);
       }
     });
+  },
+  deletePhotos(ids,success, error){
+    $.ajax({
+      url: `api/photos/${ids}`,
+      type: 'DELETE',
+      data_type: 'json',
+      success: function(resp) {
+        success(resp);
+      },
+      error: function(resp) {
+        error("deletePhoto",resp);
+      }
+    });
   }
 };
 

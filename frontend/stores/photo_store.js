@@ -23,6 +23,13 @@ function _removePhoto(photo){
   PhotoStore.__emitChange();
 }
 
+function _removePhotos(photos){
+  photos.forEach((photo) =>{
+    delete _photos[photo.id];
+  });
+  PhotoStore.__emitChange();
+}
+
 PhotoStore.all = function(){
   let photoArray = [];
   Object.keys(_photos).forEach((id) =>{
@@ -46,6 +53,9 @@ PhotoStore.__onDispatch = function(payload){
     break;
     case PhotoConstants.PHOTO_REMOVED:
     _removePhoto(payload.photo);
+    break;
+    case PhotoConstants.PHOTOS_REMOVED:
+    _removePhotos(payload.photos);
     break;
   }
 };

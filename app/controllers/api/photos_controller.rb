@@ -39,13 +39,20 @@ class Api::PhotosController < ApplicationController
   end
 
   def destroy
-    @photo = Photo.find_by_id(params[:id])
-    if(@photo)
-      @photo.destroy
-      render :show
-    else
-      render json: {base: ['Photo not found!']}, status: 404
+    ids = params[:id].split(",")
+    @photos = []
+    ids.each do |id|
+      @photo = Photo.find_by_id(id)
+      if(@photo)
+        @photos.push(@photo)
+        @photo.destroy
+      else
+        render json: {base: ['Photo not found!']}, status: 404
+      end
     end
+
+    render :index
+
   end
 
   def photo_params

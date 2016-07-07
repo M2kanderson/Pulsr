@@ -3,12 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user-icon{
-  left: -80px;
-  position: absolute;
+  display: inline-block;
+  float: left;
+}
+.user-icon img{
   width: 100px;
   height: 100px;
   padding: 15px;
-  // float: left;
+  border-radius: 50%;
 }
 
 .user-icon-header{
