@@ -163,7 +163,7 @@
     width: 250px;
    }
   .searchbar{
-    margin-right: 150px;
+    margin-right: 170px;
     margin-top: 8px;
     display: flex;
     flex-direction: row;
@@ -236,7 +236,7 @@
   border-radius: 3px;
   border: 0px;
   padding: 0px 20px;
-  margin: 10px 100px 10px 10px;
+  margin: 10px 20px 10px 10px;
   line-height: 32px;
   height: 32px;
   min-width: 100px;
@@ -311,6 +311,7 @@
 
 /*photos index*/
 .photos-index{
+  margin-top: 100px;
   width:100%;
   display: flex;
   flex-direction:column;

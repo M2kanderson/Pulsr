@@ -27,7 +27,7 @@ const Header = React.createClass({
     SessionStore.addListener(this._onChange);
   },
   _onChange(){
-    this.setState({modalOpen: false, currentUser: SessionStore.current_user()});
+    this.setState({modalOpen: false, userSettingsOpen:false, currentUser: SessionStore.current_user()});
   },
   _signUp(){
     this.component = <SignupForm />;
@@ -74,7 +74,7 @@ const Header = React.createClass({
         </div>
       );
     }else {
-        let settings = this.state.userSettingsOpen ? <UserSettingsDropdown /> : "";
+        let settings = this.state.userSettingsOpen ? <UserSettingsDropdown/> : "";
         return (
           <div className="header-right">
             <img className="user-icon-header"

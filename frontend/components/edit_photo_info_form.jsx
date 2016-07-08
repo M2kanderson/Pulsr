@@ -43,7 +43,8 @@ const EditPhotoInfoForm = React.createClass({
                   onChange={this.updateDescription}
                   value={this.state.description}>
         </textarea>
-        <input className="edit-photo-info-button" type="submit" value="Done"></input>
+        <input className="edit-photo-info-button"
+          type="submit" value="Done"></input>
       </form>);
 
   }
