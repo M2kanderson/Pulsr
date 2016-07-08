@@ -29,13 +29,15 @@ const PhotoComments = React.createClass({
     });
   },
   render: function() {
+    let commentForm = SessionStore.isUserLoggedIn() ?
+        <CommentForm photoId={this.props.photoId}/> : "";
     return (
       <div className="comments-container">
         <h1 className="comment-header">Comments</h1>
         <ul className="comments">
           {this.comments()}
         </ul>
-        <CommentForm photoId={this.props.photoId}/>
+        {commentForm}
 
       </div>
     );

@@ -12,13 +12,15 @@ const SessionActions = require("../actions/session_actions");
 const SignupForm = require("./signup_form");
 const LoginForm = require("./login_form");
 const Searchbar = require("./searchbar");
+const UserSettingsDropdown = require("./user_settings_dropdown");
 
 
 const Header = React.createClass({
   getInitialState: function() {
     return {
       currentUser: SessionStore.current_user(),
-      modalOpen: false
+      modalOpen: false,
+      userSettingsOpen: false
     };
   },
   componentWillMount(){
@@ -53,6 +55,9 @@ const Header = React.createClass({
   onModalOpen(){
     ModalStyle.content.opacity = 100;
   },
+  toggleUserSettings(){
+    this.setState({userSettingsOpen: !this.state.userSettingsOpen});
+  },
   headerButtons(){
     if(!SessionStore.isUserLoggedIn())
     {
@@ -69,11 +74,13 @@ const Header = React.createClass({
         </div>
       );
     }else {
+        let settings = this.state.userSettingsOpen ? <UserSettingsDropdown /> : "";
         return (
           <div className="header-right">
-            <img className="user-icon-header" src={this.state.currentUser.icon}></img>
-            <button className="signout_button"
-                    onClick={this._logout}>Sign Out</button>
+            <img className="user-icon-header"
+              src={this.state.currentUser.icon}
+              onClick={this.toggleUserSettings}></img>
+            {settings}
             <Searchbar/>
           </div>
         );
@@ -88,6 +95,7 @@ const Header = React.createClass({
               <span>Explore</span>
               <div className="dropdown-content">
                 <ul>
+                  <li><Link to={"/search"}>Photos</Link></li>
                   <li><Link to={"/cameraroll"}>Cameraroll</Link></li>
                   <li><Link to={"/photostream"}>Photostream</Link></li>
                   <li><Link to={"/albums"}>Albums</Link></li>

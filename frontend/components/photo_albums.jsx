@@ -27,11 +27,12 @@ const PhotoAlbums = React.createClass({
   },
   render: function() {
     let albums = this.state.albums.map((album)=>{
+      let src = album.photos.length > 0 ? album.photos[0].url : "http://res.cloudinary.com/pulsr/image/upload/v1467306727/camera-icon-2_dc0oce.png";
       return(
         <li className="photo-album" key={album.id}>
           <a className="thumbnail"
              onClick={this._onClick.bind(this, album.id)}
-             style={{backgroundImage: 'url(' + album.photos[0].url + ')'}}
+             style={{backgroundImage: 'url(' + src + ')'}}
             ></a>
           <span className="title">
             <a onClick={this._onClick.bind(this, album.id)}>{album.title}</a>

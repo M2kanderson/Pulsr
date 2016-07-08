@@ -4,6 +4,7 @@ const ReactRouter = require('react-router');
 const SessionStore = require("../stores/session_store");
 const SessionActions = require("../actions/session_actions");
 const Header = require("./header");
+const Footer = require("./footer");
 
 const App = React.createClass({
   getInitialState: function() {
@@ -21,9 +22,15 @@ const App = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <Header />
-        {this.props.children}
+      <div className="app">
+        <div className="wrapper">
+          <Header />
+          {this.props.children}
+          <div className="push"></div>
+        </div>
+        <div className="footer">
+          <Footer />
+        </div>
       </div>
     );
   }

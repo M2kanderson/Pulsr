@@ -21,3 +21,62 @@
   z-index: 3;
   float: right;
 }
+
+.user-settings-dropdown{
+  position: absolute;
+  right: -1px;
+  top: 28px;
+  width: 150px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.user-settings-view{
+  height: 75px;
+  position: relative;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  border: 1px solid #aaa;
+  top: 18px;
+  cursor: auto;
+  background-size: cover;
+  background-position: center;
+}
+
+.user-settings-nav{
+  position: relative;
+  padding: 0 15px 14px;
+  width: 100%;
+  height: 1.95em;
+  z-index: 2;
+  background: white;
+  border-radius: 0 0 4px 4px;
+  box-sizing: border-box;
+}
+
+.user-settings-nav li{
+  color: #006dac;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 3px;
+}
+
+.user-settings-nav li:hover{
+  background-color: #d1d1e0;
+}
+
+.settings{
+  margin-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+
+.logout{
+  width:100%;
+  padding-top: 10px;
+}
