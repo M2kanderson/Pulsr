@@ -33,6 +33,7 @@ const AlbumModal = React.createClass({
   },
   onModalClose(){
     AlbumModalStyle.content.opacity = 0;
+    this.setState({albumForm:false});
     this.props.closeModal();
   },
   onModalOpen(){

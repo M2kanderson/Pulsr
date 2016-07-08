@@ -1,7 +1,7 @@
 module.exports ={
   overlay:{
     position : 'fixed',
-    top : 0,
+    top : 55,
     left : 0,
     right : 0,
     bottom : 0,
@@ -14,7 +14,7 @@ module.exports ={
     width: "748px",
     minWidth: "620px",
     maxWidth: "815px",
-    marginTop: "-314px",
+    marginTop: "-280px",
     marginLeft: "-374px",
     background: "white",
     boxShadow: "0 0 0 1px rgba(0,0,0,0.3),0 1px 4px rgba(0,0,0,0.2)",

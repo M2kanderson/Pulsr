@@ -326,3 +326,43 @@ body { font-family: sans-serif; }
 .album-selection-list-item:hover{
   background-color: #f3f5f6;
 }
+
+//album form
+.album-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+
+.album-form-field{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.album-form-title, .album-form-desc{
+  padding: 10px;
+  margin-bottom: 30px;
+  height: 40px;
+  font-size: 12px;
+}
+
+.album-form-desc{
+  height: 80px;
+}
+
+.album-submit{
+  width: 120px;
+  height: 40px;
+  text-align: center;
+  background-color: #128fdc;
+  color: white;
+  font-size: 15px;
+}
+
+.album-submit:disabled{
+  background-color: #ddd;
+  color: #898989;
+}

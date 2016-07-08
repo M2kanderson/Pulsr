@@ -38,13 +38,13 @@ const AlbumForm = React.createClass({
     return (
       <div className="album-form">
         <form className="album-form-field" onSubmit={this.createAlbum}>
-          <input onChange={this.updateTitle}
+          <input className="album-form-title" onChange={this.updateTitle}
                  placeholder="Add a title"></input>
-          <textarea onChange={this.updateDescription}
-                    placeholder="Add a description(optional)"></textarea>
-                  <input type="submit"
-                    value="Done"
-                    disabled={!this.state.activeButton} className="album-submit"></input>
+          <textarea className="album-form-desc" onChange={this.updateDescription}
+                    placeholder="Add a description (optional)"></textarea>
+          <input type="submit"
+            value="Create Album"
+            disabled={!this.state.activeButton} className="album-submit"></input>
         </form>
       </div>
     );
