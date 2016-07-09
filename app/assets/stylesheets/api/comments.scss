@@ -250,6 +250,10 @@
   align-items: flex-start;
 }
 
+.comment-button-hidden{
+  display: none;
+}
+
 .edit-comment-form textarea{
   position: relative;
   top: -1px;

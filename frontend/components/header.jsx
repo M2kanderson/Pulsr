@@ -35,12 +35,12 @@ const Header = React.createClass({
     // hashHistory.push("/users/new");
   },
   _signIn(){
-    this.component = <LoginForm />;
+    this.component = <LoginForm modal="true"/>;
     this.setState({modalOpen: true});
     // hashHistory.push("/session/new");
   },
   _guest(){
-    this.component = <LoginForm guest="true" />;
+    this.component = <LoginForm guest="true" modal="true"/>;
     this.setState({modalOpen: true});
     // hashHistory.push("/session/new");
   },
@@ -74,7 +74,8 @@ const Header = React.createClass({
         </div>
       );
     }else {
-        let settings = this.state.userSettingsOpen ? <UserSettingsDropdown/> : "";
+        let settings = this.state.userSettingsOpen ?
+        <UserSettingsDropdown toggleModal={this.toggleUserSettings}/> : "";
         return (
           <div className="header-right">
             <img className="user-icon-header"
@@ -110,7 +111,7 @@ const Header = React.createClass({
              onRequestClose={this.onModalClose}
              style={ModalStyle}
              onAfterOpen={this.onModalOpen}>
-            <button onClick={this.onModalClose}>X</button>
+            <a className="close-x" onClick={this.onModalClose}>X</a>
             {this.component}
           </Modal>
         </header>

@@ -26,7 +26,6 @@ const App = React.createClass({
         <div className="wrapper">
           <Header />
           {this.props.children}
-          <div className="push"></div>
         </div>
         <div className="footer">
           <Footer />

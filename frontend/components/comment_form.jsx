@@ -27,21 +27,24 @@ const CommentForm = React.createClass({
   onFocus(){
     this.setState({commentButton: true});
   },
-  onBlur(){
-    setTimeout(() =>{this.setState({commentButton: false});}, 100);
-
+  onBlur(e){
+    this.setState({commentButton: false});
   },
   render: function() {
     let commentButton = this.state.commentButton ?
                           <input className="comment-button"
                           type="submit"
-                          value="Comment"></input> : "";
+                          value="Comment"
+                          onMouseDown={this.createComment}></input> :
+                          <input className="comment-button-hidden"
+                          type="submit"
+                          value="Comment"></input>;
     return (
       <div className="comments-form">
         <div className="comment-icon">
           <img src={SessionStore.current_user().icon}></img>
         </div>
-        <form className="comment-form-field" onSubmit={this.createComment}>
+        <form className="comment-form-field">
           <textarea ref="commentInput"
                     onChange={this.updateBody}
                     onFocus={this.onFocus}

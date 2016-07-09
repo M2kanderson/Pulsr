@@ -88,23 +88,30 @@ const LoginForm = React.createClass({
       errors = "";
     }
 
+    let klassName = "login-form";
+    if(this.props.modal) {
+      klassName += " modal";
+    }
     return (
-      <form onSubmit={this._onSubmit}>
-        <h2 className="user-form-header">Log In</h2>
-        {errors}
-
-          <label for="username">Username: </label>
+      <form className={klassName} onSubmit={this._onSubmit}>
+        <h2 className="user-form-header">Sign In</h2>
+        <div className="errors">{errors}</div>
+        <div className="user-login-body">
           <input type="text" id="description"
+                  className="user-login-input"
                   onChange={this._updateUsername}
-                  value={this.state.username}></input>
-          <label for="password">Password: </label>
+                  value={this.state.username}
+                  placeholder="Username"></input>
           <input type="password" id="password"
+                 className="user-login-input"
                  onChange={this._updatePassword}
-                 value={this.state.password}></input>
-          <br></br>
+                 value={this.state.password}
+                 placeholder="Password"></input>
           <br></br>
 
-        <input type="submit" value="Submit"></input>
+        <input className="login-form-submit" type="submit" value="Submit"></input>
+        </div>
+
       </form>
     );
   }

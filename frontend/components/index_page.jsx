@@ -27,7 +27,7 @@ const IndexPage = React.createClass({
       Page = <IndexPhotos />;
     }
     return (
-      <div >
+      <div className="index">
         {Page}
       </div>
     );

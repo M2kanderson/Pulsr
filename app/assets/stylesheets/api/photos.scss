@@ -194,6 +194,9 @@
   padding-left: 130px;
   padding-right: 130px;
   display: block;
+  width: 100%;
+  min-width: 800px;
+  padding-bottom: 109px;
 }
 
 .search-title{
@@ -266,6 +269,7 @@
 }
 
 .cameraroll-photo{
+  cursor: pointer;
   max-height: 100%;
 }
 

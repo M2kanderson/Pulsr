@@ -78,51 +78,99 @@
    background-color: #f3f5f6
  }
 
- .wrapper{
-   min-height: 100%;
-   height: auto !important;
-   height: 100%;
+ h1{
+   font-family: 'Lato', sans-serif;
+   font-size: 24px;
  }
 
- .footer, .push{
-   height: 4em;
+ /* Clearfix */
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+ .wrapper{
+   min-height: 100vh;
+   height: auto !important;
+   display: flex;
+   flex-direction: column;
+ }
+
+ .footer{
  }
 
  #content{
-   min-height: 100%;
+   min-height: 100vh;
+   /*display: flex;
+   flex-direction: column;*/
+ }
+ .app{
+   min-height: 100vh;
    display: flex;
    flex-direction: column;
    position: relative;
  }
- .app{
-   min-height: 100%;
-   position: relative;
- }
 
- .content{
-   height: 100%;
- }
+.index{
+  font-family: 'Lato', sans-serif;
+}
 
 /*signup signin forms*/
+ .errors{
+   color: red;
+   padding-bottom: 10px;
+ }
  .user-form-header{
+   margin-bottom: 20px;
+   text-align: center;
+   width: 100%;
    font-family: 'Lato', sans-serif;
    font-size: 24px;
-   color: #7575a3;
-   padding: 3px 0px 10px 10px;
+   color: #41415d;
+   padding: 3px 0px 20px 10px;
    border-bottom: 2px solid lightblue;
+ }
+
+ .login-form{
+   font-family: 'Lato', sans-serif;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   height: 400px;
+ }
+
+ .login-form.modal {
+   height: 257px;
+ }
+
+ .user-login-body{
+   display: flex;
+   flex-direction: column;
+   width: 250px;
+ }
+
+ .user-login-input{
+   margin: 10px;
+   padding-left: 10px;
  }
 
  .user-form-body{
    display: flex;
    flex-direction: column;
-   width: 500px;
+   width: 100%;
  }
 
  .user-form-row{
    display: flex;
    flex-direction: row;
    justify-content: space-around;
-   height: 20px;
+ }
+
+ .user-form-row-column{
+   display: flex;
+   flex-direction: column;
  }
 
 /*header*/
@@ -147,8 +195,8 @@
     right: 0;
     bottom: 0;
     height: 109px;
-    min-width: 1060px;
-    width: 100%;
+    /*min-width: 1060px;
+    width: 100%;*/
     font-size: 14px;
     text-align: center;
   }
@@ -202,6 +250,8 @@
  .header-left{
    display: flex;
  }
+
+ /*dropdown*/
  .explore-dropdown{
    position: relative;
    top: 18px;
@@ -231,7 +281,10 @@
    display: block;
  }
 
-.signup_button, .signin_button, .guest_button, .signout_button{
+
+
+/*buttons*/
+.signup_button, .signin_button, .guest_button, .signout_button, .login-form-submit{
   color: white;
   background-color: #128fdc;
   border-radius: 3px;
@@ -272,7 +325,7 @@
   background-color: #00b300;
 }
 
-.signup_button:hover{
+.signup_button:hover, .login-form-submit:hover{
   background-color: #0066ff
 }
 
@@ -287,13 +340,13 @@
 
 
 /*index spash area (not logged in)*/
-.index_image{
+.index-image{
   display: block;
-  min-width:1375px;
+  /*min-width:1375px;*/
   width: 100%
 }
 
-.index_header{
+.index-header{
   font-family: 'Lato', sans-serif;
   font-size: 36px;
   display: block;
@@ -303,7 +356,7 @@
   color: lightblue;
 }
 
-.index_subheader{
+.index-subheader{
   display:inline-block;
   font-size: 20px;
   color: white;
@@ -313,6 +366,7 @@
 /*photos index*/
 .photos-index{
   margin-top: 100px;
+  margin-bottom: 109px;
   width:100%;
   display: flex;
   flex-direction:column;
@@ -365,4 +419,55 @@
 
 .edit-icon{
   width: 20px;
+}
+
+/*account settings*/
+.account-settings-header{
+  margin-top: 100px;
+  margin-bottom: 40px;
+  margin-left: 20px;
+}
+.account-settings{
+  font-family: 'Lato', sans-serif;
+  width: 100%;
+  margin-bottom: 109px;
+}
+
+.account-settings h1{
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.account-settings tr{
+}
+
+.account-settings th{
+  padding: 10px 15px 10px 10px;
+  width: 30%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.settings-td{
+  padding: 10px 0;
+  width: 50%;
+  vertical-align: top;
+  font-size: 12px;
+  text-align: left;
+}
+
+.settings-edit{
+  cursor: pointer;
+  font-size: 12px;
+  vertical-align: top;
+  color: #0063DC;
+  font-weight: bold;
+  padding: 10px 10px 10px 0;
+  width: 20%;
+  text-align: right;
+}
+
+.settings-user-icon{
+  width: 48px;
+  height: 48px;
 }

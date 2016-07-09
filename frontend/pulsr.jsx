@@ -22,6 +22,7 @@ const AlbumShow = require('./components/album_show');
 const UserPhotos = require('./components/user_photos');
 const Cameraroll = require('./components/cameraroll');
 const FilteredPhotos = require("./components/filtered_photos");
+const SettingsForm = require("./components/settings_form");
 
 //actions
 const SessionActions = require('./actions/session_actions');
@@ -61,6 +62,7 @@ const appRouter = (
       <Route path="/photostream" component={UserPhotos} onEnter={_ensureLoggedIn}></Route>
       <Route path="/search" component={FilteredPhotos}></Route>
       <Route path="/cameraroll" component={Cameraroll} onEnter={_ensureLoggedIn}></Route>
+      <Route path="/settings" component={SettingsForm} onEnter={_ensureLoggedIn}></Route>
     </Route>
   </Router>
 );

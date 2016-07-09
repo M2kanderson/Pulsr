@@ -4,6 +4,7 @@ const SessionStore = require('../stores/session_store');
 const AlbumActions = require('../actions/album_actions');
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
+const UserBanner = require('./user_banner');
 
 
 const IndexAlbums = React.createClass({
@@ -25,8 +26,8 @@ const IndexAlbums = React.createClass({
   _onClick(id){
     hashHistory.push(`/albums/${id}`);
   },
-  render: function() {
-    let albums = this.state.albums.map((album)=>{
+  albums(){
+    return this.state.albums.map((album)=>{
       let src = album.photos.length > 0 ? album.photos[0].url : "http://res.cloudinary.com/pulsr/image/upload/v1467306727/camera-icon-2_dc0oce.png";
       return(
         <div className="photo-album" key={album.id}>
@@ -41,16 +42,19 @@ const IndexAlbums = React.createClass({
             </span>
             <span className="counts">{album.photos.length + " item(s)"}</span>
           </div>
-
-
         </div>);
     });
+  },
+  render: function() {
+
     return (
-      <div className="albums-index">
-        <h1>Albums</h1>
-        <div className="albums-container">
-          {albums}
-        </div>
+      <div>
+        <UserBanner />
+          <div className="albums-index">
+            <div className="albums-container">
+              {this.albums()}
+            </div>
+          </div>
       </div>
     );
   }

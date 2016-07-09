@@ -6,6 +6,7 @@ const Masonry = require('react-masonry-component');
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
 const UploadButton = require('./upload_button');
+const UserBanner = require('./user_banner');
 
 
 const UserPhotos = React.createClass({
@@ -41,22 +42,24 @@ const UserPhotos = React.createClass({
         </div>);
     });
     return (
-      <div className="albums-index">
-        <h1>Photos</h1>
-          <div className= "grid-container">
-            <div className="grid">
-              <Masonry
-                className={'photo-gallery'}
-                elementType={'ul'}
-                options={this.masonryOptions}
-                diableImagesLoaded={false}
-                updateOnEachImageLoad={false}>
-                {photos}
-              </Masonry>
-              <UploadButton postImage={this.postImage} />
-            </div>
+      <div>
+        <UserBanner />
+          <div className="albums-index">
+              <div className= "grid-container">
+                <div className="grid">
+                  <Masonry
+                    className={'photo-gallery'}
+                    elementType={'ul'}
+                    options={this.masonryOptions}
+                    diableImagesLoaded={false}
+                    updateOnEachImageLoad={false}>
+                    {photos}
+                  </Masonry>
+                </div>
+              </div>
           </div>
       </div>
+
     );
   }
 

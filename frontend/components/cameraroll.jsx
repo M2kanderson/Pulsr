@@ -5,6 +5,7 @@ const PhotoActions = require('../actions/photo_actions');
 const UploadButton = require('./upload_button');
 const Photo = require('./photo');
 const PhotoSelectView = require('./photo_select_view');
+const UserBanner = require('./user_banner');
 
 
 const SelectableGroup = require('react-selectable').SelectableGroup;
@@ -57,26 +58,28 @@ const Cameraroll = React.createClass({
   },
   render: function() {
     let photos = this.state.photos.map((photo)=>{
-      let selected = this.state.selectedKeys.indexOf(photo.id) > -1;
-      return (<div key={photo.id} onClick={this.selectItem.bind(null, photo.id)}>
-        <SelectableComponent selected={selected}
-                             selectableKey={photo.id}
-                             photo={photo}></SelectableComponent>
+    let selected = this.state.selectedKeys.indexOf(photo.id) > -1;
+    return (<div key={photo.id} onClick={this.selectItem.bind(null, photo.id)}>
+      <SelectableComponent selected={selected}
+                           selectableKey={photo.id}
+                           photo={photo}></SelectableComponent>
 
-      </div>);
+    </div>);
     });
+    let view = this.state.selectedKeys.length > 0 ?
+          <PhotoSelectView photoIds={this.state.selectedKeys}
+                     clearSelection={this.clearSelection}/> : "";
     return (
       <SelectableGroup onSelection={this.handleSelection}>
+        <UserBanner />
         <div className="cameraroll-index">
-          <h1>Photos</h1>
             <div className= "cameraroll-container">
               <div className="cameraroll-photos">
                 {photos}
                 <UploadButton postImage={this.postImage} />
               </div>
             </div>
-            <PhotoSelectView photoIds={this.state.selectedKeys}
-                             clearSelection={this.clearSelection}/>
+            {view}
         </div>
       </SelectableGroup>
 
