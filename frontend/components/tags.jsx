@@ -2,6 +2,8 @@ const React = require('react');
 const TagStore = require('../stores/tag_store');
 const SessionStore = require('../stores/session_store');
 const TagActions = require('../actions/tag_actions');
+const PhotoActions = require('../actions/photo_actions');
+const PhotoStore = require('../stores/photo_store');
 const TagForm = require('./tag_form');
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
@@ -43,12 +45,12 @@ const PhotoTags = React.createClass({
 
             </a>
             {this.belongsToUser() ?
-            <button onClick={this.removeTag.bind(null,tag.id)}>x</button> : ""}
+            <button onClick={this.removeTag.bind(null,tag)}>x</button> : ""}
           </li>);
     });
   },
-  removeTag(id){
-    TagActions.deleteTag(id);
+  removeTag(tag){
+    TagActions.removeTagFromPhoto(this.props.photoId,tag);
   },
   addTags(){
     this.setState({addingTags: true});

@@ -103,6 +103,20 @@ const AlbumApiUtil = {
       }
     });
   },
+  addPhotosToAlbum(album, photoIds, success, error){
+    $.ajax({
+      url: `api/albums/${album.id}`,
+      type: 'PATCH',
+      data_type: 'json',
+      data: {album: album, photo_ids: photoIds},
+      success: function(resp) {
+        success(resp);
+      },
+      error: function(resp) {
+        error("updateAlbum",resp);
+      }
+    });
+  },
   deleteAlbum(id,success, error){
     $.ajax({
       url: `api/albums/${id}`,

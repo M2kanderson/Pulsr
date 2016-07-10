@@ -28,8 +28,16 @@ const FilteredPhotos = React.createClass({
   _onClick(id){
     hashHistory.push(`/photos/${id}`);
   },
-  render: function() {
-    let photos = this.state.photos.map((photo)=>{
+  noPhotosFoundMessage(){
+    return <div className="nothing-found">
+      <p>Oops! No photos were found matching "{this.props.location.query.tagNames}" 	&#9785;. Please try again.</p>
+    </div>;
+  },
+  photos(){
+    if(this.state.photos.length <=0){
+      return this.noPhotosFoundMessage();
+    }
+    return this.state.photos.map((photo)=>{
       return(
         <div className="photos-grid-item" key={photo.id}>
           <img className="photo_image"
@@ -37,9 +45,13 @@ const FilteredPhotos = React.createClass({
                onClick={this._onClick.bind(this, photo.id)}></img>
         </div>);
     });
+  },
+  render: function() {
+    let title = this.state.photos.length > 0 ?
+        <h2 className="search-title">Everyone's Photos</h2> : "";
     return (
       <div className="search-container">
-        <h2 className="search-title">Everyone's Photos</h2>
+        {title}
           <div className= "photos-grid-container">
             <div className="photos-grid">
               <Masonry
@@ -47,7 +59,7 @@ const FilteredPhotos = React.createClass({
                 options={this.masonryOptions}
                 diableImagesLoaded={false}
                 updateOnEachImageLoad={false}>
-                {photos}
+                {this.photos()}
               </Masonry>
             </div>
           </div>

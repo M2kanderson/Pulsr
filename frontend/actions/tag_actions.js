@@ -17,6 +17,9 @@ const TagActions = {
   createTag(tag){
     TagApiUtil.createTag(tag, this.receiveTag, ErrorActions.setErrors);
   },
+  removeTagFromPhoto(photoId, tag){
+    TagApiUtil.removeTag(photoId, tag,this.removeTag, ErrorActions.setErrors);
+  },
   deleteTag(id){
     TagApiUtil.deleteTag(id,this.removeTag, ErrorActions.setErrors);
   },

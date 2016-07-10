@@ -26,6 +26,9 @@ const AlbumActions = {
   updateAlbum(album){
     AlbumApiUtil.updateAlbum(album,this.receiveAlbum, ErrorActions.setErrors);
   },
+  addPhotosToAlbum(album, photoIds){
+    AlbumApiUtil.addPhotosToAlbum(album,photoIds,this.receiveAlbum, ErrorActions.setErrors);
+  },
   deleteAlbum(id){
     AlbumApiUtil.deleteAlbum(id,this.removeAlbum, ErrorActions.setErrors);
   },

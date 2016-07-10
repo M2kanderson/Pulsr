@@ -7,7 +7,7 @@ class Api::AlbumsController < ApplicationController
     end
     if(params[:photo_id])
       photo = Photo.find_by_id(params[:photo_id])
-      @albums = [photo.album]
+      @albums = photo.albums
     end
   end
 
@@ -20,7 +20,7 @@ class Api::AlbumsController < ApplicationController
     if(@album.save)
       params[:photo_ids].each do |photo_id|
         photo = Photo.find_by_id(photo_id)
-        photo.album_id = @album.id
+        photo.albums.push(@album)
         photo.save
       end
       render :show
@@ -31,6 +31,14 @@ class Api::AlbumsController < ApplicationController
 
   def update
     @album = Album.find_by_id(params[:id])
+    if(params[:photo_ids])
+      params[:photo_ids].each do |photo_id|
+        photo = Photo.find_by_id(photo_id)
+        unless(@album.photos.include?(photo))
+          @album.photos.push(photo)
+        end
+      end
+    end
     if(@album.update(album_params))
       render :show
     else

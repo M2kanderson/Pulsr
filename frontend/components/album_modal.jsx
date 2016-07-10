@@ -39,12 +39,14 @@ const AlbumModal = React.createClass({
   onModalOpen(){
     AlbumModalStyle.content.opacity = 100;
   },
-  addToAlbum(albumId){
-    this.props.photoIds.forEach((photoId) =>{
-      let photo = PhotoStore.find(photoId);
-      photo.album_id = albumId;
-      PhotoActions.updatePhoto(photo);
-    });
+  addToAlbum(album){
+    AlbumActions.addPhotosToAlbum(album, this.props.photoIds);
+    // this.props.photoIds.forEach((photoId) =>{
+    //   let photo = PhotoStore.find(photoId);
+    //   console.log(photo.albums);
+    //   photo.albums.push(album);
+    //   PhotoActions.updatePhoto(photo);
+    // });
 
   },
   createAlbum(){
@@ -55,11 +57,11 @@ const AlbumModal = React.createClass({
   },
   albums(){
     return this.state.albums.map((album)=>{
-      let src = album.photos.length > 0 ? album.photos[0].url : "http://res.cloudinary.com/pulsr/image/upload/v1467306727/camera-icon-2_dc0oce.png";
+      let src = album.albumMemberCount > 0 ? album.firstPhotoUrl : "http://res.cloudinary.com/pulsr/image/upload/v1467306727/camera-icon-2_dc0oce.png";
       return(
         <div className="album-selection-list-item"
              key={album.id}
-             onClick={this.addToAlbum.bind(null, album.id)}>
+             onClick={this.addToAlbum.bind(null, album)}>
           <div className="album-selection-list-item-container">
             <img className="album-selection-list-item-icon"
                  src={src}></img>

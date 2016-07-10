@@ -48,6 +48,24 @@ const PhotoApiUtil = {
       }
     });
   },
+  fetchAlbumPhotos(photoIds, success, error){
+    if(!photoIds)
+    {
+      photoIds = [];
+    }
+    $.ajax({
+      url: 'api/photos',
+      type: 'GET',
+      data_type: 'json',
+      data: {photo_ids: photoIds},
+      success: function(resp) {
+        success(resp);
+      },
+      error: function(resp) {
+        error("fetchAllPhotos",resp);
+      }
+    });
+  },
   fetchPhoto(id, success, error){
     $.ajax({
       url: `api/photos/${id}`,

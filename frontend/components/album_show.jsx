@@ -21,12 +21,13 @@ const AlbumShow = React.createClass({
     let potentialAlbum = AlbumStore.find(parseInt(this.props.params.albumId));
     return {
       album: potentialAlbum ? potentialAlbum : {},
-      photos: potentialAlbum ? potentialAlbum.photos: []
+      photos: potentialAlbum ? potentialAlbum.photos: [],
+      user: potentialAlbum ? potentialAlbum.user: {}
     };
   },
   componentWillMount(){
     this.albumListener = AlbumStore.addListener(this._onChange);
-    // PhotoActions.fetchAllPhotos();
+    AlbumActions.fetchUserAlbums(SessionStore.current_user().id);
   },
   componentWillUnmount(){
     this.albumListener.remove();
@@ -34,14 +35,15 @@ const AlbumShow = React.createClass({
   _onChange(){
     let potentialAlbum = AlbumStore.find(parseInt(this.props.params.albumId));
     this.setState({album: potentialAlbum ? potentialAlbum : {},
-                  photos: potentialAlbum ? potentialAlbum.photos: {}
+                  photos: potentialAlbum ? potentialAlbum.photos: [],
+                  user: potentialAlbum ? potentialAlbum.user: {}
                 });
   },
   _showImage(id){
     hashHistory.push(`/photos/${id}`);
   },
-  render: function() {
-    let childElements = this.state.photos.map((photo) => {
+  photos(){
+    return this.state.photos.map((photo) => {
       return(
         <li key={photo.id} className="grid-item">
           <img onClick={this._showImage.bind(this, photo.id)} src={photo.url} />
@@ -49,9 +51,25 @@ const AlbumShow = React.createClass({
       );
 
     });
+  },
+  render: function() {
     return (
       <div className="album-show">
         <Link className="album-back-link" to={"/albums"}>&lt; Back to Albums List</Link>
+        <div className="album-header">
+          <div className="album-header-image"
+               style={{backgroundImage: 'url(' + this.state.album.firstPhotoUrl + ')'}}>
+               <div className="album-header-title">
+                 {this.state.album.title}</div>
+               <div className="album-header-desc">
+                 {this.state.album.description}</div>
+               <div className="album-header-stats">
+                 {this.state.album.albumMemberCount} photos</div>
+               <div className="album-header-name">
+                 By&#58; {this.state.user.firstname} {this.state.user.lastname}
+               </div>
+          </div>
+        </div>
         <div className= "grid-container">
           <div className="grid">
             <Masonry
@@ -61,13 +79,11 @@ const AlbumShow = React.createClass({
               options={this.masonryOptions}
               diableImagesLoaded={false}
               updateOnEachImageLoad={false}>
-              {childElements}
+              {this.photos()}
             </Masonry>
           </div>
         </div>
       </div>
-
-
     );
   }
 

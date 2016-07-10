@@ -4,63 +4,41 @@ const PhotoActions = require('../actions/photo_actions');
 const Modal = require('react-modal');
 const ModalStyle = require('../photo_modal_style');
 const PhotoDetail = require('./photo_detail');
-// const Slider = require('react-slick');
 const Comments = require('./comments');
 const Tags = require('./tags');
 const PhotoAlbums = require("./photo_albums");
 const PhotoInfo = require("./photo_info");
 
 
-let sliderSettings ={
-  arrows: true,
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll : 1,
-  initialSlide: 2,
-};
-
 const PhotoShow = React.createClass({
   getInitialState: function() {
     PhotoActions.fetchAllPhotos();
     let potentialPhoto = PhotoStore.find(parseInt(this.props.params.photoId));
-    let albumPhotos = [];
-    if(potentialPhoto){
-      albumPhotos = potentialPhoto.album ? potentialPhoto.album.photos : [];
-    }
     return {
       photo: potentialPhoto ? {title: potentialPhoto.title,
                                description: potentialPhoto.description,
                                url: potentialPhoto.url,
                                id: potentialPhoto.id} : {},
       user: potentialPhoto ? potentialPhoto.user: {},
-      album: potentialPhoto ? potentialPhoto.album : {},
-      albumPhotos: albumPhotos,
+      albums: potentialPhoto ? potentialPhoto.albums : {},
       editing: null,
       modalOpen: false
     };
   },
   componentWillMount(){
     this.photoListener = PhotoStore.addListener(this._onChange);
-    // PhotoActions.fetchAllPhotos();
   },
   componentWillUnmount(){
     this.photoListener.remove();
   },
   _onChange(){
     let potentialPhoto = PhotoStore.find(parseInt(this.props.params.photoId));
-    let albumPhotos = [];
-    if(potentialPhoto){
-      albumPhotos = potentialPhoto.album ? potentialPhoto.album.photos : [];
-    }
     this.setState({photo: potentialPhoto ? {title: potentialPhoto.title,
                                             description: potentialPhoto.description,
                                             url: potentialPhoto.url,
                                             id: potentialPhoto.id} : {},
                   user: potentialPhoto ? potentialPhoto.user: {},
-                  album: potentialPhoto ? potentialPhoto.album : {},
-                  albumPhotos: albumPhotos
+                  albums: potentialPhoto ? potentialPhoto.albums : {}
                 });
   },
   _popOutPhoto(){
@@ -98,60 +76,7 @@ const PhotoShow = React.createClass({
     this.toggleEditing(null);
     PhotoActions.updatePhoto(this.state.photo);
   },
-  renderItemOrEditField(item){
-      switch (item) {
-        case "title":
-        if(this.state.editing === "title"){
-          return (
-            <form onSubmit={this._updatePhoto}>
-              <input type="text" id="title"
-                          onChange={this.updateTitle}
-                          value={this.state.photo.title}></input>
-              <input type="submit" value="Finish Editing"></input>
-            </form>);
-
-        }else{
-          return (<div className="photo-info-item">
-            <p
-              key={ item }
-              className="photo-show-title">{this.state.photo.title}
-              <img className="edit-icon" onClick={this.toggleEditing.bind(null, item)} src="http://res.cloudinary.com/pulsr/image/upload/v1467413964/edit_256.png"></img>
-            </p>
-          </div>);
-
-        }
-        case "description":
-        if(this.state.editing === "description"){
-          return (
-            <form onSubmit={this._updatePhoto}>
-              <textarea onChange={this.updateDescription}
-                        value={this.state.photo.description}>
-              </textarea>
-            <input type="submit" value="Finish Editing"></input>
-            </form>);
-        }else{
-          return (<div className="photo-info-item">
-            <p
-              key={ item }
-              className="photo-show-description">{this.state.photo.description}
-              <img className="edit-icon" onClick={this.toggleEditing.bind(null, item)} src="http://res.cloudinary.com/pulsr/image/upload/v1467413964/edit_256.png"></img>
-            </p>
-          </div>);
-        }
-      }
-
-  },
-  // <img className="user-icon" src={this.state.user.icon}></img>
-  // <p className="photo-show-user">
-  //   {this.state.user.firstname}  {this.state.user.lastname}</p>
-  // {this.renderItemOrEditField("title")}
-  // {this.renderItemOrEditField("description")}
   render: function() {
-    let images = this.state.albumPhotos.map((photo) =>{
-      return <img className="photo_image_show"
-            src={photo.url}
-            onClick={this._popOutPhoto.bind(this, photo)}></img>;
-    });
     return (
       <div >
         <div className="photo-show">
@@ -170,7 +95,7 @@ const PhotoShow = React.createClass({
 
           <div className="photo-right-view">
             <div className="album-view">
-              <h5>This photo has 1 album</h5>
+              <h5>This photo has {this.state.albums.length} album(s)</h5>
               <PhotoAlbums photoId={this.props.params.photoId}/>
             </div>
             <div className="tag-view">

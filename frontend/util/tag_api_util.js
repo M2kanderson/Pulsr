@@ -57,6 +57,20 @@ const TagApiUtil = {
       }
     });
   },
+  removeTag(photoId, tag,success,error){
+    $.ajax({
+      url: `api/tags/${tag.id}`,
+      type: 'PATCH',
+      data_type: 'json',
+      data: {photo_id: photoId, tag:{name:tag.name}},
+      success: function(resp) {
+        success(resp);
+      },
+      error: function(resp) {
+        error("updateTag",resp);
+      }
+    });
+  },
   deleteTag(id,success, error){
     $.ajax({
       url: `api/tags/${id}`,

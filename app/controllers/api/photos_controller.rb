@@ -9,6 +9,10 @@ class Api::PhotosController < ApplicationController
     if(params[:tag_names])
       @photos = Photo.select("DISTINCT photos.*").joins(:taggings).joins(:tags).where("tags.name IN (?)", params[:tag_names])
     end
+
+    if(params[:photo_ids])
+      @photos = @photos.where("photos.id: IN (?)", params[:photo_ids])
+    end
   end
 
   def show

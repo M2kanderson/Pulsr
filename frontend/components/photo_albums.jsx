@@ -1,5 +1,6 @@
 const React = require('react');
 const AlbumStore = require('../stores/album_store');
+const PhotoStore = require('../stores/photo_store');
 const SessionStore = require('../stores/session_store');
 const AlbumActions = require('../actions/album_actions');
 const ReactRouter = require('react-router');
@@ -27,7 +28,7 @@ const PhotoAlbums = React.createClass({
   },
   render: function() {
     let albums = this.state.albums.map((album)=>{
-      let src = album.photos.length > 0 ? album.photos[0].url : "http://res.cloudinary.com/pulsr/image/upload/v1467306727/camera-icon-2_dc0oce.png";
+      let src = album.albumMemberCount > 0 ? album.firstPhotoUrl : "http://res.cloudinary.com/pulsr/image/upload/v1467306727/camera-icon-2_dc0oce.png";
       return(
         <li className="photo-album" key={album.id}>
           <a className="thumbnail"
@@ -37,7 +38,7 @@ const PhotoAlbums = React.createClass({
           <span className="title">
             <a onClick={this._onClick.bind(this, album.id)}>{album.title}</a>
           </span>
-          <span className="counts">{album.photos.length + " item(s)"}</span>
+          <span className="counts">{album.albumMemberCount + " item(s)"}</span>
         </li>);
     });
     return (

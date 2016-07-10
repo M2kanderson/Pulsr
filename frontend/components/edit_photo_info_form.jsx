@@ -9,7 +9,6 @@ const EditPhotoInfoForm = React.createClass({
     return {
       title: this.props.photo.title,
       description: this.props.photo.description,
-      album_id:this.props.photo.album_id,
       public:this.props.photo.public,
       url:this.props.photo.url,
       user_id: this.props.photo.user_id,

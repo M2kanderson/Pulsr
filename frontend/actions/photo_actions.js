@@ -15,6 +15,10 @@ const PhotoActions = {
   {
     PhotoApiUtil.fetchTagPhotos(tagNames,this.receiveAllPhotos, ErrorActions.setErrors);
   },
+  fetchAlbumPhotos(photoIds)
+  {
+    PhotoApiUtil.fetchAlbumPhotos(photoIds,this.receiveAllPhotos, ErrorActions.setErrors);
+  },
   fetchPhoto(id){
     PhotoApiUtil.fetchPhoto(id, this.receivePhoto, ErrorActions.setErrors);
   },

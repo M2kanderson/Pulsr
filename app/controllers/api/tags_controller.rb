@@ -37,6 +37,19 @@ class Api::TagsController < ApplicationController
     end
   end
 
+  def update
+    @tag = Tag.find_by_id(params[:id])
+    if(params[:photo_id])
+      photos = Photo.select("DISTINCT photos.*").joins(:taggings).joins(:tags).where("photos.id != ? AND tags.id = ?", params[:photo_id], params[:id])
+      @tag.photos = photos
+    end
+    if(@tag.update(tag_params))
+      render :show
+    else
+      render json: ["Tag not found"], status: 404
+    end
+  end
+
   def destroy
     @tag = Tag.find_by_id(params[:id])
     if(@tag)

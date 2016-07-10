@@ -34,7 +34,7 @@ function _removePhotos(photos){
 function _addAlbumPhotos(album, photoIds){
   photoIds.forEach((photoId) =>{
     let photo = PhotoStore.find(photoId);
-    photo.album_id = album.id;
+    photo.albums.push(album);
   });
 }
 

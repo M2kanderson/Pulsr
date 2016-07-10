@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703185553) do
+ActiveRecord::Schema.define(version: 20160709214652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "album_memberships", force: :cascade do |t|
+    t.integer  "album_id"
+    t.integer  "photo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "album_memberships", ["album_id"], name: "index_album_memberships_on_album_id", using: :btree
+  add_index "album_memberships", ["photo_id", "album_id"], name: "index_album_memberships_on_photo_id_and_album_id", unique: true, using: :btree
 
   create_table "albums", force: :cascade do |t|
     t.integer  "user_id",     null: false
@@ -43,12 +53,10 @@ ActiveRecord::Schema.define(version: 20160703185553) do
     t.boolean  "public",      default: false, null: false
     t.string   "url",                         null: false
     t.integer  "user_id",                     null: false
-    t.integer  "album_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "photos", ["album_id"], name: "index_photos_on_album_id", using: :btree
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
