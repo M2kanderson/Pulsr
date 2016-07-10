@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@media (max-width: 964px){
+  header{
+    flex-wrap: wrap;
+  }
+  .header-left{
+    order: 2;
+    background-color: #272626;
+    width: 100%;
+  }
+  .header-right{
+    width: 100%;
+    margin-left: 100px;
+  }
+}
+
 .user-icon{
   display: inline-block;
   float: left;

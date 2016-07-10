@@ -59,6 +59,7 @@ const AlbumShow = React.createClass({
         <div className="album-header">
           <div className="album-header-image"
                style={{backgroundImage: 'url(' + this.state.album.firstPhotoUrl + ')'}}>
+               <div className="dimmer"></div>
                <div className="album-header-title">
                  {this.state.album.title}</div>
                <div className="album-header-desc">

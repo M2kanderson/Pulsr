@@ -78,11 +78,11 @@ const Header = React.createClass({
         <UserSettingsDropdown toggleModal={this.toggleUserSettings}/> : "";
         return (
           <div className="header-right">
+            <Searchbar/>
             <img className="user-icon-header"
               src={this.state.currentUser.icon}
               onClick={this.toggleUserSettings}></img>
             {settings}
-            <Searchbar/>
           </div>
         );
       }

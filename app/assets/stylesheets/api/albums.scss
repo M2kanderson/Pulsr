@@ -61,6 +61,13 @@
   position: relative;
   margin-top: 1px;
 }
+
+.thumbnail:hover::before{
+  top: -6px;
+}
+.thumbnail:hover::after{
+  top: -3px;
+}
 .thumbnail::before{
   content: "";
   right: 4px;
@@ -117,6 +124,7 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 109px;
+  margin-top: 50px;
 }
 
 .albums-container{
@@ -170,10 +178,12 @@
 }
 
 .album-header-title{
+  z-index: 101;
   font-size: 50px;
 }
 
 .album-header-desc{
+  z-index: 101;
   width: 80%;
   word-wrap: break-word;
   font-size: 24px;
@@ -181,7 +191,12 @@
   font-style: italic;
 }
 
+.album-header-stats, .album-header-name{
+  z-index: 101;
+}
+
 .album-header-image{
+  position: relative;
   height: 300px;
   width: 80%;
   background-repeat: no-repeat;
