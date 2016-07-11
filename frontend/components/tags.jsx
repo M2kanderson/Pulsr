@@ -1,4 +1,5 @@
 const React = require('react');
+const ReactDOM = require('react-dom');
 const TagStore = require('../stores/tag_store');
 const SessionStore = require('../stores/session_store');
 const TagActions = require('../actions/tag_actions');

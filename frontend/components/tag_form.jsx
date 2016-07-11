@@ -14,6 +14,9 @@ const TagForm = React.createClass({
   updateName(e){
     this.setState({name:e.target.value});
   },
+  componentDidMount(){
+    this._input.focus();
+  },
   createTag(e){
     if(e.keyCode === 13)
     {
@@ -22,14 +25,15 @@ const TagForm = React.createClass({
         TagActions.createTag({name:tag.trim().toLowerCase(), photo_id:this.state.photo_id});
       });
       this.setState({name:""});
-      ReactDOM.findDOMNode(this.refs.tagInput).value = "";
+      this._input.value = "";
     }
   },
   render: function() {
-
     return (
         <input type="text"
-               ref="tagInput"
+               ref={(input) => {this._input = input;
+                                if(input!=null)
+                                input.focus();}}
                className={this.props.hidden ? 'hidden-form' : 'add-tag'}
                placeholder="Add a tag"
                onChange={this.updateName}
