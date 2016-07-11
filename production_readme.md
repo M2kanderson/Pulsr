@@ -1,6 +1,6 @@
 # Pulsr
 
-[Pulsr live][heroku] **NB:** This should be a link to your production site
+[Pulsr live][heroku]
 
 [heroku]: http://pulsr.herokuapp.com
 
