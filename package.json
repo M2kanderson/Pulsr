@@ -1,9 +1,10 @@
 {
   "name": "Pulsr",
   "version": "1.0.0",
-  "description": "== README",
+  "description": "[pulsr.herokuapp.com][heroku]",
   "main": "index.js",
   "directories": {
+    "doc":"docs",
     "test": "test"
   },
   "engines": {
@@ -13,6 +14,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "webpack --config webpack.config.prod.js"
+  },
+  "repository":{
+    "type":"git",
+    "url": "git+https://example.com.git"
   },
   "keywords": [],
   "author": "",
