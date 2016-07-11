@@ -2,7 +2,6 @@ const Store = require('flux/utils').Store;
 const AppDispatcher = require('../dispatcher/dispatcher');
 const AlbumConstants = require('../constants/album_constants');
 const PhotoConstants = require('../constants/photo_constants');
-const PhotoStore = require('../stores/photo_store');
 
 let _albums = {};
 const AlbumStore = new Store(AppDispatcher);

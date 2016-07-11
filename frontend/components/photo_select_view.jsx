@@ -2,7 +2,6 @@ const React = require('react');
 const PhotoStore = require('../stores/photo_store');
 const PhotoActions = require('../actions/photo_actions');
 const ReactRouter = require('react-router');
-const hashHistory = ReactRouter.hashHistory;
 const AlbumModal = require("./album_modal");
 
 

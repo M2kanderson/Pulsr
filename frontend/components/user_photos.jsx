@@ -5,7 +5,6 @@ const PhotoActions = require('../actions/photo_actions');
 const Masonry = require('react-masonry-component');
 const ReactRouter = require('react-router');
 const hashHistory = ReactRouter.hashHistory;
-const UploadButton = require('./upload_button');
 const UserBanner = require('./user_banner');
 
 

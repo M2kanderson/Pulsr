@@ -1,6 +1,4 @@
 const React = require('react');
-const ReactDOM = require('react-dom');
-const AlbumStore = require('../stores/album_store');
 const SessionStore = require('../stores/session_store');
 const AlbumActions = require('../actions/album_actions');
 
