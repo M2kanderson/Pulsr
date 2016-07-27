@@ -226,9 +226,9 @@
   width: 80%;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: flex-start;;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   margin-bottom: 150px;
 }
 
@@ -271,14 +271,57 @@
   border-left: 4px solid white;
   border-bottom: 4px solid white;
 }
+.photo-group-photos{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.photo-group p{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #898989;
+}
 
 .cameraroll-photo{
   cursor: pointer;
   max-height: 100%;
 }
 
+.cameraroll-photo-items{
+  position: relative;
+}
+.privacy-button{
+  background: url('http://res.cloudinary.com/pulsr/image/upload/c_scale,h_20/v1469564761/icons/lock-xxl.png');
+  border: none;
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.public {
+  background-image: url('https://s.yimg.com/uy/build/images/sprites/cameraroll@2x-32e63773.png');
+  background-size: 162px 140px;
+  background: url(https://s.yimg.com/uy/build/images/sprites/cameraroll-471293c0.png) -27px -102px no-repeat;
+  width:26px;
+  height: 20px;
+
+  // background: url('http://res.cloudinary.com/pulsr/image/upload/c_scale,h_20/v1469575328/icons/eyes-icon-0.png');
+}
+
+.private {
+  left: 8px;
+  bottom: 2px;
+  background: url('http://res.cloudinary.com/pulsr/image/upload/c_scale,h_20/v1469564761/icons/lock-xxl.png');
+}
+
 //photo select view
 .photo-select-view{
+  z-index: 2;
   left: 120px;
   right: 120px;
   margin-left: 0px;

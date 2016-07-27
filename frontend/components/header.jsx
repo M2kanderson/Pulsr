@@ -63,13 +63,14 @@ const Header = React.createClass({
     {
       return (
         <div className="header-right">
+          <Searchbar/>
+          <button className="signin_button"
+                  onClick={this._signIn}>Sign In</button>
           <button className="signup_button"
                   onClick={this._signUp}>Sign Up</button>
           <button className="guest_button"
                   onClick={this._guest}>Guest</button>
-          <button className="signin_button"
-                  onClick={this._signIn}>Sign In</button>
-          <Searchbar/>
+
 
         </div>
       );
@@ -87,19 +88,32 @@ const Header = React.createClass({
         );
       }
   },
+  userDropdown(){
+    if(SessionStore.isUserLoggedIn()){
+      return (<div className="explore-dropdown">
+        <span>Your Voyages</span>
+        <div className="dropdown-content">
+          <ul>
+            <li><Link to={"/cameraroll"}>Cameraroll</Link></li>
+            <li><Link to={"/photostream"}>Photostream</Link></li>
+            <li><Link to={"/albums"}>Albums</Link></li>
+          </ul>
+
+        </div>
+      </div>);
+    }
+  },
   render: function() {
     return (
         <header>
           <div className="header-left">
             <h1 className="logo"><Link to={"/"}>Pulsr</Link></h1>
+            {this.userDropdown()}
             <div className="explore-dropdown">
               <span>Explore</span>
               <div className="dropdown-content">
                 <ul>
-                  <li><Link to={"/search"}>Photos</Link></li>
-                  <li><Link to={"/cameraroll"}>Cameraroll</Link></li>
-                  <li><Link to={"/photostream"}>Photostream</Link></li>
-                  <li><Link to={"/albums"}>Albums</Link></li>
+                  <li><Link to={"/search"}>Find Photos</Link></li>
                 </ul>
 
               </div>

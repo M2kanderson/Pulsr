@@ -75,7 +75,7 @@ const CommentShow = React.createClass({
           <img src={this.state.comment.user.icon}></img>
         </div>
         <p className="comment-author">
-          <a href="#">{this.state.comment.user.firstname} {this.state.comment.user.lastname}</a>
+          <a>{this.state.comment.user.firstname} {this.state.comment.user.lastname}</a>
           <span className="comment-date">{this.state.comment.age+ " ago"} </span>
         </p>
         {this.state.editComment === this.state.comment.id ?

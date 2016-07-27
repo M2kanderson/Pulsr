@@ -4,7 +4,7 @@
   "description": "[pulsr.herokuapp.com][heroku]",
   "main": "index.js",
   "directories": {
-    "doc":"docs",
+    "doc": "docs",
     "test": "test"
   },
   "engines": {
@@ -15,8 +15,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "webpack --config webpack.config.prod.js"
   },
-  "repository":{
-    "type":"git",
+  "repository": {
+    "type": "git",
     "url": "git+https://example.com.git"
   },
   "keywords": [],
@@ -39,6 +39,7 @@
     "react-modal": "^1.3.0",
     "react-router": "^2.5.1",
     "react-selectable": "^0.2.5",
+    "react-tooltip": "^3.0.13",
     "webpack": "^1.13.1"
   },
   "devDependencies": {}

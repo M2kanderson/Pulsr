@@ -56,16 +56,56 @@ const Cameraroll = React.createClass({
   clearSelection(){
     this.setState({selectedKeys: []});
   },
-  render: function() {
-    let photos = this.state.photos.map((photo)=>{
-    let selected = this.state.selectedKeys.indexOf(photo.id) > -1;
-    return (<div key={photo.id} onClick={this.selectItem.bind(null, photo.id)}>
-      <SelectableComponent selected={selected}
-                           selectableKey={photo.id}
-                           photo={photo}></SelectableComponent>
+  sameDate(prev, current){
+    return current.getMonth() === prev.getMonth()
+            && current.getDay() === prev.getDay()
+            && current.getYear() === prev.getYear();
+  },
+  convertMonthToString(month){
+    let monthStrings = ['January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'];
+    return monthStrings[month];
+  },
+  photoGroup(photos, date){
+    let renderedPhotos = photos.map((photo)=>{
+      let selected = this.state.selectedKeys.indexOf(photo.id) > -1;
+      return (<div key={photo.id} onClick={this.selectItem.bind(null, photo.id)}>
+        <SelectableComponent selected={selected}
+                             selectableKey={photo.id}
+                             photo={photo}></SelectableComponent>
 
     </div>);
     });
+    return (<div key={date} className="photo-group">
+      <p>{`${this.convertMonthToString(date.getMonth())} ${date.getDate()}, ${1900+date.getYear()}`}</p>
+      <div className="photo-group-photos">
+        {renderedPhotos}
+      </div>
+    </div>);
+
+  },
+  photoGroups(){
+    let groups = [];
+    let prevDate = new Date(0);
+    let date;
+    let groupPhotos = [];
+    this.state.photos.forEach((photo, index) =>{
+      let photoDate = new Date(photo.created_at * 1000);
+      if(this.sameDate(prevDate, photoDate) || index === 0){
+        groupPhotos.push(photo);
+      }
+      else{
+        groups.push(this.photoGroup(groupPhotos, prevDate));
+        groupPhotos = [photo];
+      }
+      prevDate = photoDate;
+    });
+    groups.push(this.photoGroup(groupPhotos, prevDate));
+    return groups.map((group) =>{
+      return group;
+    });
+  },
+  render: function() {
     let view = this.state.selectedKeys.length > 0 ?
           <PhotoSelectView photoIds={this.state.selectedKeys}
                      clearSelection={this.clearSelection}/> : "";
@@ -75,7 +115,7 @@ const Cameraroll = React.createClass({
         <div className="cameraroll-index">
             <div className= "cameraroll-container">
               <div className="cameraroll-photos">
-                {photos}
+                {this.photoGroups()}
                 <UploadButton postImage={this.postImage} />
               </div>
             </div>

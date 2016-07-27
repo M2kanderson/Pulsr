@@ -46,7 +46,6 @@ const IndexAlbums = React.createClass({
     });
   },
   render: function() {
-
     return (
       <div>
         <UserBanner />

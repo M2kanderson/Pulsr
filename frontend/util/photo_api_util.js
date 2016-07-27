@@ -98,7 +98,12 @@ const PhotoApiUtil = {
       url: `api/photos/${photo.id}`,
       type: 'PATCH',
       data_type: 'json',
-      data: {photo: photo},
+      data: {photo: {title: photo.title,
+                                description: photo.description,
+                                url: photo.url,
+                                user_id: photo.user_id,
+                                album_id: photo.album_id,
+                                public: photo.public}},
       success: function(resp) {
         success(resp);
       },

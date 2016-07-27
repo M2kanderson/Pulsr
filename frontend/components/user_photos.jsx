@@ -33,12 +33,15 @@ const UserPhotos = React.createClass({
   },
   render: function() {
     let photos = this.state.photos.map((photo)=>{
-      return(
-        <div className="grid-item" key={photo.id}>
-          <img className="photo_image"
-               src={photo.url}
-               onClick={this._onClick.bind(this, photo.id)}></img>
-        </div>);
+      if(photo.public){
+        return(
+          <div className="grid-item" key={photo.id}>
+            <img className="photo_image"
+                 src={photo.url}
+                 onClick={this._onClick.bind(this, photo.id)}></img>
+          </div>);
+      }
+
     });
     return (
       <div>

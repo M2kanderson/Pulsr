@@ -28,9 +28,15 @@ const IndexPhotos = React.createClass({
     let photos = this.state.photos.map((photo)=>{
       return(
           <div className="photos-images" key={photo.id}>
-            <img className="photos_image" src={photo.url} onClick={this._onClick.bind(this, photo.id)}></img>
-            <p>{photo.title}</p>
-            <p>{photo.description}</p>
+            <img className="photos-image" src={photo.url} onClick={this._onClick.bind(this, photo.id)}></img>
+            <div className="index-photo-info-container">
+              <img className="user-icon-photo-index"
+                src={photo.user.icon}></img>
+              <div className="index-photo-info">
+                <p className="photos-image-name">{photo.user.firstname} {photo.user.lastname}</p>
+                <p className="photos-image-title">{photo.title}</p>
+              </div>
+            </div>
           </div>);
     });
     return (

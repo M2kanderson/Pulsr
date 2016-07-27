@@ -43,7 +43,11 @@ PhotoStore.all = function(){
   Object.keys(_photos).forEach((id) =>{
     photoArray.push(_photos[id]);
   });
-  return photoArray;
+  return photoArray.sort(
+    function(a, b) {
+        return a.created_at - b.created_at;
+    }
+  );
 };
 
 PhotoStore.find = function(id){

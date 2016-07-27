@@ -18,6 +18,13 @@ const LoginForm = React.createClass({
   componentDidMount(){
     SessionStore.addListener(this._redirectIfLoggedIn);
     ErrorStore.addListener(this._getErrors);
+    if(this.props.guest === "true")
+    {
+      this._addUsername();
+      //
+      // SessionActions.login({username: "guest",
+      //                       password: "guestlogin"});
+    }
   },
   _getErrors(){
     this.setState({errors: ErrorStore.formErrors("login")});
@@ -63,20 +70,14 @@ const LoginForm = React.createClass({
             SessionActions.login({username: this.state.username,
                                   password: this.state.password});
           }
-        }, 250);
+        }, 150);
       }
 
-    }, 250);
+    }, 150);
 
   },
   render: function() {
-    if(this.state.guest === "true")
-    {
-      this._addUsername();
-      //
-      // SessionActions.login({username: "guest",
-      //                       password: "guestlogin"});
-    }
+
     let errors;
     if(this.state.errors.base)
     {

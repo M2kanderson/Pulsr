@@ -2,7 +2,7 @@ class Api::PhotosController < ApplicationController
   def index
     @photos = Photo.all
     if(params[:user_id])
-      @photos = @photos.where(user_id: params[:user_id])
+      @photos = @photos.where(user_id: params[:user_id]).order(:created_at)
     end
     #join photos with tags
     #find photos with tag names that are in the provided list of tags

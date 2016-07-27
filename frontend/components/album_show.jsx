@@ -17,7 +17,6 @@ let style = {
 
 const AlbumShow = React.createClass({
   getInitialState: function() {
-    AlbumActions.fetchUserAlbums(SessionStore.current_user().id);
     let potentialAlbum = AlbumStore.find(parseInt(this.props.params.albumId));
     return {
       album: potentialAlbum ? potentialAlbum : {},
@@ -27,7 +26,7 @@ const AlbumShow = React.createClass({
   },
   componentWillMount(){
     this.albumListener = AlbumStore.addListener(this._onChange);
-    AlbumActions.fetchUserAlbums(SessionStore.current_user().id);
+    AlbumActions.fetchAlbum(this.props.params.albumId);
   },
   componentWillUnmount(){
     this.albumListener.remove();
