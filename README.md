@@ -18,14 +18,20 @@ The root page listens to a `SessionStore` and renders content based on a call to
 
 Components were developed modularly for ease of use and re-use. The app was developed in a SCRUM-like manner, with Potentially Shippable Increments (PSI) of the app at the completion of each feature.
 
+<img src="./screenshots/signin.png"/ width=400 margin="0 auto">
+
 
 ### Photo uploading
 
   Pulsr uses Cloudinary to store user photos for easy and fast storage and retrieval.  The photo urls are then stored in a database in the backend to be accessed by users at a later date. Upon login, information presented for these photos may be edited by the photo uploader including the title and description.
+  
+  <img src="./screenshots/cameraroll.png"/ width=400 margin="0 auto">
 
 ### Albums
 
   The user may choose to add several photos to an album through the cameraroll component.  The cameraroll component allows the user to select multiple photos at once by clicking on them individually or by clicking a dragging a selection box around the photos.  A menu pops up after the selection is made displaying the selected photos and allowing the user to choose a previously existing album to add the photos too, or to create a new album for the photos. The albums can be named, be given a description, and can be accessed by other users or through the albums component.
+  
+  <img src="./screenshots/albums.png"/ width=400 margin="0 auto">
 
 
 ### Tags and Search
@@ -35,6 +41,8 @@ Components were developed modularly for ease of use and re-use. The app was deve
 ### Comments
 
   Logged in users may leave comments on any photo to share their enthusiasm!
+  
+  <img src="./screenshots/comments.png"/ width=400 margin="0 auto">
 
 ## The Future of Pulsr
 
