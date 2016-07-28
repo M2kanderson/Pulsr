@@ -8,11 +8,15 @@ Pulsr is a full-stack web application inspired by Flickr.  It utilizes Ruby on R
 
 ## Features & Implementation
 
-### Interaction Single-Page App for Sharing Photography
+### Interactive Single-Page App for Sharing Photography
 
 Pulsr is a single-page app which allows users to upload their best photos and share them with the community. Users are able
 to access their own photos after logging in and edit them as they like or search through other's photos through a tag based
 search engine.
+
+The root page listens to a `SessionStore` and renders content based on a call to `SessionStore.currentUser()`.  Sensitive information is kept out of the frontend of the app.
+
+Components were developed modularly for ease of use and re-use. The app was developed in a SCRUM-like manner, with Potentially Shippable Increments (PSI) of the app at the completion of each feature.
 
 
 ### Photo uploading
