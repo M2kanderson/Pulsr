@@ -3,7 +3,6 @@ const ReactRouter = require('react-router');
 const Link = ReactRouter.Link;
 const hashHistory = ReactRouter.hashHistory;
 const AlbumStore = require('../stores/album_store');
-const SessionStore = require('../stores/session_store');
 const AlbumActions = require('../actions/album_actions');
 const Masonry = require('react-masonry-component');
 

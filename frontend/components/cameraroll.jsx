@@ -87,7 +87,6 @@ const Cameraroll = React.createClass({
   photoGroups(){
     let groups = [];
     let prevDate = new Date(0);
-    let date;
     let groupPhotos = [];
     this.state.photos.forEach((photo, index) =>{
       let photoDate = new Date(photo.created_at * 1000);

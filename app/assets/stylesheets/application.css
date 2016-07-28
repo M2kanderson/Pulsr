@@ -36,6 +36,8 @@
    font-size: 100%;
    vertical-align: baseline;
    list-style: none;
+   border-collapse: collapse;
+    border-spacing: 0;
  }
  html{
    height: 100%;
@@ -197,6 +199,7 @@
     right: 0;
     width: 100%
   }
+
   footer{
     z-index: -1;
     font-family: 'Lato', sans-serif;
@@ -289,24 +292,72 @@
    font-family: 'Lato', sans-serif;
  }
 
+
  .dropdown-content {
-   border: 1px solid black;
-   display: none;
    position: absolute;
-   background-color: white;
-   min-width: 160px;
-   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-   z-index: 1;
-   color: black;
-   padding: 5px;
+   left: 0;
+   right: 0;
+   top: 30px;
+   background: white;
+   border-radius: 0 0 5px 5px;
+   border: 1px solid rgba(0,0,0,0.2);
+   border-top: none;
+   border-bottom: none;
+   list-style: none;
+   transition: all 0.3s ease-out;
+   max-height: 0;
+   overflow: hidden;
+   width: 150px;
+}
+
+.explore-dropdown:before{
+  content: '';
+  display: none;
+  height: 0;
+  width: 0;
+  position: absolute;
+  left: 9px;
+  top: 20px;
+  border-width: 0 10px 10px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.25) transparent;
+}
+.explore-dropdown:after{
+   left: 9px;
+   content: '';
+   display: none;
+   height: 0;
+   width: 0;
+   position: absolute;
+   border-width: 0 9px 9px;
+   border-style: solid;
+   border-color: white transparent;
+ }
+
+.explore-dropdown:hover:after{
+   display: block;
+ }
+
+ .explore-dropdown:hover:before{
+   display: block;
+ }
+
+.dropdown-content li{
+  padding: 5px 10px;
+  transition: all 0.3s ease-out;
+  color: black;
 }
 .dropdown-content li:hover{
   background-color: #d1d1e0;
+  color: #006dac;
 }
 
-.explore-dropdown:hover .dropdown-content {
-   display: block;
+.explore-dropdown:hover .dropdown-content{
+   max-height: 100px;
+   border-bottom: 1px solid rgba(0,0,0,0.2);
+   border-top: 1px solid rgba(0,0,0,0.2);
  }
+
 
 
 
@@ -506,13 +557,28 @@
 }
 
 /*account settings*/
+
+.account-settings-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+  line-height: 30px;
+  align-items: center;
+}
+
+.account-settings-view{
+  width: 80%;
+}
 .account-settings-header{
   margin-top: 100px;
+  padding-bottom: 10px;
   margin-bottom: 40px;
-  margin-left: 20px;
+  /*margin-left: 60px;*/
+  border-bottom: 3px solid black;
 }
 .account-settings{
-  font-family: 'Lato', sans-serif;
   width: 100%;
   margin-bottom: 109px;
 }
@@ -522,13 +588,22 @@
   font-weight: 600;
 }
 
-.account-settings tr{
+.account-settings tr:nth-child(odd){
+  text-align: left;
+  /*background: #adc4da;*/
+}
+
+.account-settings tr:nth-child(even){
+  text-align: left;
+  border-top: 2px solid black;
+  border-bottom: 2px solid gray;
+  /*background: #cae3eb;*/
 }
 
 .account-settings th{
   padding: 10px 15px 10px 10px;
   width: 30%;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -536,7 +611,7 @@
   padding: 10px 0;
   width: 50%;
   vertical-align: top;
-  font-size: 12px;
+  font-size: 16px;
   text-align: left;
 }
 

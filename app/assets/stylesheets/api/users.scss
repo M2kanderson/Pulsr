@@ -62,11 +62,52 @@
   top: 50px;
   width: 200px;
   box-sizing: border-box;
+}
+
+.user-settings-dropdown:before{
+  content: '';
+  // display: none;
+  height: 0;
+  width: 0;
+  position: absolute;
+  left: 159px;
+  top: 1px;
+  border-width: 0 10px 10px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.25) transparent;
+}
+.user-settings-dropdown:after{
+   left: 160px;
+   content: '';
+   top: 2px;
+  //  display: none;
+   height: 0;
+   width: 0;
+   position: absolute;
+   border-width: 0 9px 9px;
+   border-style: solid;
+   border-color: white transparent;
+ }
+
+ .user-settings-dropdown:hover:after{
+    display: block;
+  }
+
+  .user-settings-dropdown:hover:before{
+    display: block;
+  }
+
+.hidden{
+  display: none;
+}
+
+.active{
   display: block;
 }
 
 .user-settings-view{
   height: 95px;
+  margin-top: 10px;
   position: relative;
   border-radius: 3px;
   background-color: white;
@@ -76,6 +117,8 @@
   background-size: cover;
   background-position: center;
 }
+
+
 
 .user-settings-nav{
   position: relative;

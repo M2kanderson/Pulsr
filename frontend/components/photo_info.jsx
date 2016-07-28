@@ -62,7 +62,7 @@ const PhotoInfo = React.createClass({
         </div>
         <div className="photo-info-container">
           <p className="photo-author">
-            <a href="#">{this.props.user.firstname} {this.props.user.lastname}</a>
+            <a>{this.props.user.firstname} {this.props.user.lastname}</a>
           </p>
           <li className={infoClass}
               onMouseOver={this.showButtons}

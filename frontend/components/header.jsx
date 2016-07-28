@@ -75,15 +75,16 @@ const Header = React.createClass({
         </div>
       );
     }else {
-        let settings = this.state.userSettingsOpen ?
-        <UserSettingsDropdown toggleModal={this.toggleUserSettings}/> : "";
+        let settingsClass = this.state.userSettingsOpen ?
+        "user-settings-dropdown active" : "user-settings-dropdown hidden";
         return (
           <div className="header-right">
             <Searchbar/>
             <img className="user-icon-header"
               src={this.state.currentUser.icon}
               onClick={this.toggleUserSettings}></img>
-            {settings}
+            <UserSettingsDropdown className={settingsClass}
+                                  toggleMenu={this.toggleUserSettings}/>
           </div>
         );
       }
@@ -92,14 +93,11 @@ const Header = React.createClass({
     if(SessionStore.isUserLoggedIn()){
       return (<div className="explore-dropdown">
         <span>Your Voyages</span>
-        <div className="dropdown-content">
-          <ul>
-            <li><Link to={"/cameraroll"}>Cameraroll</Link></li>
-            <li><Link to={"/photostream"}>Photostream</Link></li>
-            <li><Link to={"/albums"}>Albums</Link></li>
-          </ul>
-
-        </div>
+        <ul className="dropdown-content">
+          <li><Link to={"/cameraroll"}>Cameraroll</Link></li>
+          <li><Link to={"/photostream"}>Photostream</Link></li>
+          <li><Link to={"/albums"}>Albums</Link></li>
+        </ul>
       </div>);
     }
   },

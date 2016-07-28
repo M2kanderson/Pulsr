@@ -286,10 +286,10 @@ body { font-family: sans-serif; }
 }
 
 .album-selection-list-item-icon{
-  width: 80px;
-  height: 80px;
+  // width: 80px;
+  // height: 80px;
+  height: 100%;
   float: left;
-  overflow: hidden;
 }
 
 .album-selection-list-item-labels{
@@ -310,6 +310,10 @@ body { font-family: sans-serif; }
   min-width: 80px;
   cursor: pointer;
   float: left;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .album-selection-list-item-title{
