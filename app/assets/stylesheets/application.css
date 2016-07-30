@@ -422,15 +422,84 @@
   margin-top: 57px;
 }
 .index-image{
+  position: relative;
   display: flex;
-  height: 450px;
-  background-image: url('http://res.cloudinary.com/pulsr/image/upload/c_crop,h_381,w_1024/v1467156976/Space-Galaxy-Stars-Wallpaper-High-Resolution-1024x576_ot028u.jpg');
+  height: 600px;
+  /*background-image: url('http://res.cloudinary.com/pulsr/image/upload/c_crop,h_381,w_1024/v1467156976/Space-Galaxy-Stars-Wallpaper-High-Resolution-1024x576_ot028u.jpg');*/
+  background-image: url('http://res.cloudinary.com/pulsr/image/upload/v1469848158/background%20images/wallpaper-fantastic-planet-landscape.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+.crosshair-left{
+  width: 150px;
+  height: 150px;
+  border-left: 3px solid white;
+  border-top: 3px solid white;
+  border-radius: 5px;
+  position: absolute;
+  top: 70px;
+  left: 50px;
+}
+
+.crosshair-right{
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-right: 3px solid white;
+  border-bottom: 3px solid white;
+  border-radius: 5px;
+  bottom: 70px;
+  right: 50px;
+}
+
+.crosshair-center{
+  position: absolute;
+  left: 45%;
+  width: 100px;
+  height: 100px;
+  border: 3px solid rgba(255,255,255,0.5);
+  border-radius: 50%;
+}
+
+.explore-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  background: black;
+}
+
+.explore-image img{
+  width: 100%;
+}
+
+.explore-image button{
+  outline: none;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  background-color: #128fdc;
+  border-radius: 3px;
+  border: 0px;
+  padding: 0px 20px;
+  margin: 10px 20px 10px 10px;
+  line-height: 32px;
+  height: 32px;
+  min-width: 100px;
+  display: block;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
 .features{
   height: 300px;
   margin-bottom: 109px;

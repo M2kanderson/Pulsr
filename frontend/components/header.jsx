@@ -126,6 +126,7 @@ const Header = React.createClass({
             <a className="close-x" onClick={this.onModalClose}>X</a>
             {this.component}
           </Modal>
+
         </header>
 
     );
