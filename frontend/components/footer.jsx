@@ -7,9 +7,9 @@ const Footer = React.createClass({
 
   render: function() {
     return (
-        <footer>
-
-        </footer>
+      <footer>
+        
+      </footer>
 
     );
   }

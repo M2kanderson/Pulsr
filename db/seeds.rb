@@ -150,7 +150,7 @@ AlbumMembership.create(photo_id: 4, album_id: 2);
 AlbumMembership.create(photo_id: 5, album_id: 2);
 AlbumMembership.create(photo_id: 6, album_id: 2);
 AlbumMembership.create(photo_id: 7, album_id: 2);
-AlbumMembership.create(photo_id: 8, album_id: 3);
+AlbumMembership.create(photo_id: 9, album_id: 3);
 AlbumMembership.create(photo_id: 25, album_id: 3);
 AlbumMembership.create(photo_id: 26, album_id: 3);
 AlbumMembership.create(photo_id: 27, album_id: 3);
@@ -337,7 +337,6 @@ Tagging.create(photo_id: 32, tag_id: 1)
 Tagging.create(photo_id: 32, tag_id: 2)
 Tagging.create(photo_id: 32, tag_id: 5)
 Tagging.create(photo_id: 31, tag_id: 27)
-Tagging.create(photo_id: 31, tag_id: 28)
 Tagging.create(photo_id: 37, tag_id: 3)
 Tagging.create(photo_id: 40, tag_id: 3)
 Tagging.create(photo_id: 41, tag_id: 3)
