@@ -32,17 +32,30 @@ const UserPhotos = React.createClass({
     PhotoActions.createPhoto(img);
   },
   render: function() {
-    let photos = this.state.photos.map((photo)=>{
-      if(photo.public){
+    let pubPhotos = this.state.photos.filter((photo) => {
+      return photo.public;
+    });
+    let photos = pubPhotos.map((photo)=>{
+
         return(
           <div className="grid-item" key={photo.id}>
             <img className="photo_image"
                  src={photo.url}
                  onClick={this._onClick.bind(this, photo.id)}></img>
           </div>);
-      }
+
 
     });
+    if(photos.length === 0){
+      return (
+        <div>
+          <UserBanner />
+            <p className="photostream-no-photos">Welcome to your photostream!
+            This is your public face and only shows what other users can view.
+            You haven't set any photos to public yet! Set your photos to be
+            viewable by other users in the Cameraroll Tab.</p>
+        </div>);
+    }
     return (
       <div>
         <UserBanner />

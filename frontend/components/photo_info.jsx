@@ -44,7 +44,7 @@ const PhotoInfo = React.createClass({
   },
   info(){
     return (
-      <section className="photo-info">
+      <section>
          <p className="photo-title">{this.props.photo.title}</p>
          <p className="photo-description">{this.props.photo.description}</p>
          <span className="photo-info-actions">
@@ -57,9 +57,9 @@ const PhotoInfo = React.createClass({
     let infoClass = this.state.editInfo ? "photo-info-editing" : "photo-info";
     return (
       <div className="photo-info-view">
-        <div className="user-icon">
-          <img src={this.props.user.icon}></img>
-        </div>
+        <a className="user-icon"
+           style={{backgroundImage: 'url(' + this.props.user.icon + ')'}}
+          ></a>
         <div className="photo-info-container">
           <p className="photo-author">
             <a>{this.props.user.firstname} {this.props.user.lastname}</a>

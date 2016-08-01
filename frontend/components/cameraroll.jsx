@@ -88,18 +88,21 @@ const Cameraroll = React.createClass({
     let groups = [];
     let prevDate = new Date(0);
     let groupPhotos = [];
+    if(this.state.photos.length == 0){
+      return (<p className="cameraroll-no-photos">You have no photos yet! Try adding some!</p>);
+    }
     this.state.photos.forEach((photo, index) =>{
       let photoDate = new Date(photo.created_at * 1000);
       if(this.sameDate(prevDate, photoDate) || index === 0){
         groupPhotos.push(photo);
       }
       else{
-        groups.push(this.photoGroup(groupPhotos, prevDate));
+        groups.unshift(this.photoGroup(groupPhotos, prevDate));
         groupPhotos = [photo];
       }
       prevDate = photoDate;
     });
-    groups.push(this.photoGroup(groupPhotos, prevDate));
+    groups.unshift(this.photoGroup(groupPhotos, prevDate));
     return groups.map((group) =>{
       return group;
     });
@@ -115,8 +118,9 @@ const Cameraroll = React.createClass({
             <div className= "cameraroll-container">
               <div className="cameraroll-photos">
                 {this.photoGroups()}
-                <UploadButton postImage={this.postImage} />
+
               </div>
+              <UploadButton postImage={this.postImage} />
             </div>
             {view}
         </div>

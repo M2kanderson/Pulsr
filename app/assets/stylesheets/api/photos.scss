@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .photo-info-view{
-  display: flex;
-  flex-direction: row;
+  // display: flex;
+  // align-items: center;
 }
 .photo-author, .photo-title{
   font-weight: 600;
@@ -19,7 +19,7 @@
   display: inline-block;
 }
 .photo-info{
-  width: 400px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   background: #f3f5f6;
@@ -52,7 +52,8 @@
 }
 
 .photo-info-container{
-  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .photo-title{
@@ -63,7 +64,7 @@
 .photo-description{
   font-family: 'Lato', sans-serif;
   font-size: 14px;
-  width: 500px;
+  width: 100%;
 }
 
 .edit-photo-title{
@@ -176,6 +177,7 @@
   width: 33.33%;
 }
 
+
 .photos-grid-item {
   float: left;
 }
@@ -210,6 +212,11 @@
 }
 
 //cameraroll
+.cameraroll-no-photos{
+  width: 80%;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
 .cameraroll-index{
   height: 100%;
 }
@@ -219,7 +226,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
 }
 
 .cameraroll-photos{
@@ -454,4 +461,12 @@
   display: flex;
   flex-direction: row;
   cursor: pointer;
+}
+
+//photostream
+.photostream-no-photos{
+  width: 80%;
+  font-size: 16px;
+  margin-top: 50px;
+  margin-left: 50px;
 }

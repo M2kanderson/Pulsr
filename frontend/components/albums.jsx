@@ -9,6 +9,7 @@ const UserBanner = require('./user_banner');
 
 const IndexAlbums = React.createClass({
   getInitialState: function() {
+    AlbumActions.fetchUserAlbums(SessionStore.current_user().id);
     return {
       albums: AlbumStore.all()
     };
@@ -27,6 +28,11 @@ const IndexAlbums = React.createClass({
     hashHistory.push(`/albums/${id}`);
   },
   albums(){
+    if(this.state.albums.length === 0){
+      return <p>Welcome to the Albums Tab! You haven't created any albums yet
+      for your photos.  Try adding some photos to an album in the cameraroll tab
+    </p>;
+    }
     return this.state.albums.map((album)=>{
       let src = album.photos.length > 0 ? album.photos[0].url : "http://res.cloudinary.com/pulsr/image/upload/v1467306727/camera-icon-2_dc0oce.png";
       return(
